@@ -1,0 +1,75 @@
+{
+  "collectionName": "components_variations_variants",
+  "info": {
+    "displayName": "variants",
+    "icon": "database",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "SKU": {
+      "type": "string"
+    },
+    "barcode": {
+      "type": "string"
+    },
+    "variantRank": {
+      "type": "biginteger"
+    },
+    "inventoryQuantity": {
+      "type": "biginteger"
+    },
+    "originCountry": {
+      "type": "string"
+    },
+    "material": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "biginteger"
+    },
+    "length": {
+      "type": "biginteger"
+    },
+    "height": {
+      "type": "biginteger"
+    },
+    "width": {
+      "type": "biginteger"
+    },
+    "price": {
+      "type": "biginteger"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "voptions": {
+      "displayName": "voptions",
+      "type": "component",
+      "repeatable": false,
+      "component": "variations.voptions"
+    }
+  }
+}

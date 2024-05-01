@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_variations_options",
+  "info": {
+    "displayName": "options",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "option": {
+      "type": "string"
+    },
+    "values": {
+      "displayName": "values",
+      "type": "component",
+      "repeatable": true,
+      "component": "variations.values"
+    }
+  }
+}

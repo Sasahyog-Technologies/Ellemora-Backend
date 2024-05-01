@@ -590,6 +590,53 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -695,7 +742,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -724,6 +770,18 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    mobileNumber: Attribute.String;
+    fullName: Attribute.String;
+    addresses: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::address.address'
+    >;
+    wishlist: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::wishlist.wishlist'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -741,46 +799,175 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
+export interface ApiAddressAddress extends Schema.CollectionType {
+  collectionName: 'addresses';
   info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
+    singularName: 'address';
+    pluralName: 'addresses';
+    displayName: 'Address ';
     description: '';
   };
   options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
+    draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 50;
-        },
-        number
-      >;
-    code: Attribute.String & Attribute.Unique;
+    firstName: Attribute.String;
+    lastName: Attribute.String;
+    streetAddress: Attribute.String;
+    zipCode: Attribute.String;
+    city: Attribute.String;
+    state: Attribute.String;
+    country: Attribute.String;
+    mobileNumber: Attribute.String;
+    label: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
+      'api::address.address',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
+      'api::address.address',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Category';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    description: Attribute.Blocks;
+    thumbnail: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiInventoryInventory extends Schema.CollectionType {
+  collectionName: 'inventories';
+  info: {
+    singularName: 'inventory';
+    pluralName: 'inventories';
+    displayName: 'Inventory';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    SKU: Attribute.String;
+    quantity: Attribute.BigInteger;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::inventory.inventory',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::inventory.inventory',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
+  info: {
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'Product';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 50;
+      }>;
+    subTitle: Attribute.String;
+    description: Attribute.Text;
+    slug: Attribute.UID<'api::product.product', 'subTitle'>;
+    originCountry: Attribute.String;
+    material: Attribute.String;
+    discountable: Attribute.Boolean;
+    variantion: Attribute.Component<'variations.options'>;
+    variant: Attribute.Component<'variations.variants', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiWishlistWishlist extends Schema.CollectionType {
+  collectionName: 'wishlists';
+  info: {
+    singularName: 'wishlist';
+    pluralName: 'wishlists';
+    displayName: 'Wishlist';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    label: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::wishlist.wishlist',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::wishlist.wishlist',
       'oneToOne',
       'admin::user'
     > &
@@ -802,10 +989,15 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
+      'api::address.address': ApiAddressAddress;
+      'api::category.category': ApiCategoryCategory;
+      'api::inventory.inventory': ApiInventoryInventory;
+      'api::product.product': ApiProductProduct;
+      'api::wishlist.wishlist': ApiWishlistWishlist;
     }
   }
 }

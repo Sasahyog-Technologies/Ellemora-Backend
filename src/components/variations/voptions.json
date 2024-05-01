@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_variations_voptions",
+  "info": {
+    "displayName": "voptions"
+  },
+  "options": {},
+  "attributes": {
+    "option": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  }
+}

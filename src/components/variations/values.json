@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_variations_values",
+  "info": {
+    "displayName": "values",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    }
+  }
+}
