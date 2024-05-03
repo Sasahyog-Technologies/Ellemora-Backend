@@ -1,11 +1,16 @@
 {
-  "collectionName": "components_variations_variants",
+  "kind": "collectionType",
+  "collectionName": "product_variants",
   "info": {
-    "displayName": "variants",
-    "icon": "database",
+    "singularName": "product-variant",
+    "pluralName": "product-variants",
+    "displayName": "Product Variant",
     "description": ""
   },
-  "options": {},
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
   "attributes": {
     "title": {
       "type": "string"
@@ -31,17 +36,17 @@
     "weight": {
       "type": "biginteger"
     },
-    "length": {
+    "height": {
       "type": "biginteger"
     },
-    "height": {
+    "length": {
       "type": "biginteger"
     },
     "width": {
       "type": "biginteger"
     },
     "price": {
-      "type": "biginteger"
+      "type": "decimal"
     },
     "thumbnail": {
       "type": "media",
@@ -65,15 +70,23 @@
         "audios"
       ]
     },
-    "voptions": {
-      "displayName": "voptions",
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "options": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "variations.voptions"
     },
-    "slug": {
-      "type": "customField",
-      "customField": "plugin::field-uuid.uuid"
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "variants"
+    },
+    "commitedQuantity": {
+      "type": "biginteger"
     }
   }
 }

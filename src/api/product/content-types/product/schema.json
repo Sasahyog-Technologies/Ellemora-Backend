@@ -36,10 +36,10 @@
     "discountable": {
       "type": "boolean"
     },
-    "variantion": {
+    "variations": {
       "displayName": "options",
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "variations.options"
     },
     "variant": {
@@ -47,6 +47,18 @@
       "type": "component",
       "repeatable": true,
       "component": "variations.variants"
+    },
+    "variants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-variant.product-variant",
+      "mappedBy": "product"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "products"
     }
   }
 }

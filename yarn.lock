@@ -1636,7 +1636,7 @@
     "@strapi/utils" "4.24.0"
     fs-extra "10.0.0"
 
-"@strapi/strapi@^4.0.0", "@strapi/strapi@^4.15.1", "@strapi/strapi@^4.3.4", "@strapi/strapi@^4.4.0", "@strapi/strapi@^4.9.2", "@strapi/strapi@4.24.0":
+"@strapi/strapi@^4.0.0", "@strapi/strapi@^4.0.7", "@strapi/strapi@^4.15.1", "@strapi/strapi@^4.3.4", "@strapi/strapi@^4.4.0", "@strapi/strapi@^4.9.2", "@strapi/strapi@4.24.0":
   version "4.24.0"
   resolved "https://registry.npmjs.org/@strapi/strapi/-/strapi-4.24.0.tgz"
   integrity sha512-P5Kz6uesYpxDporVRkULlEzIMD1jrS+1FOEcDzxYE8yAzF4D8VODZOlo0vpMjjfEuYnchkrrBO1znfzStPxI7Q==
@@ -8502,6 +8502,11 @@ strapi-auto-uuid@^0.0.8:
   dependencies:
     uuid "^9.0.0"
 
+strapi-plugin-transformer@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.npmjs.org/strapi-plugin-transformer/-/strapi-plugin-transformer-3.1.2.tgz"
+  integrity sha512-aRjWqrZJ2QcsSDqOE27xzzmDG1c+yg8o9yUb5zFhR94+4zbGxTpLQndelkWtzNaLv5s2HhExx1JyCn/F9GZPpQ==
+
 stream-chain@^2.2.5, stream-chain@2.2.5:
   version "2.2.5"
   resolved "https://registry.npmjs.org/stream-chain/-/stream-chain-2.2.5.tgz"
@@ -9520,7 +9525,7 @@ yocto-queue@^0.1.0:
   resolved "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-yup@0.32.9:
+yup@^0.32.9, yup@0.32.9:
   version "0.32.9"
   resolved "https://registry.npmjs.org/yup/-/yup-0.32.9.tgz"
   integrity sha512-Ci1qN+i2H0XpY7syDQ0k5zKQ/DoxO0LzPg8PAR/X4Mpj6DqaeCoIYEEjDJwhArh3Fa7GWbQQVDZKeXYlSH4JMg==

@@ -46,6 +46,7 @@ export interface VariationsVariants extends Schema.Component {
     thumbnail: Attribute.Media;
     media: Attribute.Media;
     voptions: Attribute.Component<'variations.voptions'>;
+    slug: Attribute.UID & Attribute.CustomField<'plugin::field-uuid.uuid'>;
   };
 }
 

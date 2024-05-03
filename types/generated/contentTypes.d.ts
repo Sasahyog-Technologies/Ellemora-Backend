@@ -838,6 +838,42 @@ export interface ApiAddressAddress extends Schema.CollectionType {
   };
 }
 
+export interface ApiCartCart extends Schema.CollectionType {
+  collectionName: 'carts';
+  info: {
+    singularName: 'cart';
+    pluralName: 'carts';
+    displayName: 'Cart';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    product: Attribute.Relation<
+      'api::cart.cart',
+      'oneToOne',
+      'api::product.product'
+    >;
+    productVariant: Attribute.Relation<
+      'api::cart.cart',
+      'oneToOne',
+      'api::product-variant.product-variant'
+    >;
+    user: Attribute.Relation<
+      'api::cart.cart',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::cart.cart', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::cart.cart', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -853,6 +889,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     name: Attribute.String;
     description: Attribute.Blocks;
     thumbnail: Attribute.Media;
+    products: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -871,30 +912,112 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiInventoryInventory extends Schema.CollectionType {
-  collectionName: 'inventories';
+export interface ApiCollectionCollection extends Schema.CollectionType {
+  collectionName: 'collections';
   info: {
-    singularName: 'inventory';
-    pluralName: 'inventories';
-    displayName: 'Inventory';
+    singularName: 'collection';
+    pluralName: 'collections';
+    displayName: 'Collection';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    SKU: Attribute.String;
-    quantity: Attribute.BigInteger;
+    name: Attribute.String;
+    description: Attribute.Text;
+    thumbnail: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::inventory.inventory',
+      'api::collection.collection',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::inventory.inventory',
+      'api::collection.collection',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOrderOrder extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'Order';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    label: Attribute.String;
+    firstName: Attribute.String;
+    lastName: Attribute.String;
+    streetAddress: Attribute.String;
+    zipCode: Attribute.String;
+    city: Attribute.String;
+    state: Attribute.String;
+    country: Attribute.String;
+    mobileNumber: Attribute.String;
+    status: Attribute.String;
+    type: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOrderItemOrderItem extends Schema.CollectionType {
+  collectionName: 'order_items';
+  info: {
+    singularName: 'order-item';
+    pluralName: 'order-items';
+    displayName: 'Order Item';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    product: Attribute.Relation<
+      'api::order-item.order-item',
+      'oneToOne',
+      'api::product.product'
+    >;
+    productVariant: Attribute.Relation<
+      'api::order-item.order-item',
+      'oneToOne',
+      'api::product-variant.product-variant'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order-item.order-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order-item.order-item',
       'oneToOne',
       'admin::user'
     > &
@@ -925,8 +1048,18 @@ export interface ApiProductProduct extends Schema.CollectionType {
     originCountry: Attribute.String;
     material: Attribute.String;
     discountable: Attribute.Boolean;
-    variantion: Attribute.Component<'variations.options'>;
+    variations: Attribute.Component<'variations.options', true>;
     variant: Attribute.Component<'variations.variants', true>;
+    variants: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::product-variant.product-variant'
+    >;
+    categories: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::category.category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -938,6 +1071,58 @@ export interface ApiProductProduct extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductVariantProductVariant extends Schema.CollectionType {
+  collectionName: 'product_variants';
+  info: {
+    singularName: 'product-variant';
+    pluralName: 'product-variants';
+    displayName: 'Product Variant';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    SKU: Attribute.String;
+    barcode: Attribute.String;
+    variantRank: Attribute.BigInteger;
+    inventoryQuantity: Attribute.BigInteger;
+    originCountry: Attribute.String;
+    material: Attribute.String;
+    weight: Attribute.BigInteger;
+    height: Attribute.BigInteger;
+    length: Attribute.BigInteger;
+    width: Attribute.BigInteger;
+    price: Attribute.Decimal;
+    thumbnail: Attribute.Media;
+    media: Attribute.Media;
+    slug: Attribute.UID<'api::product-variant.product-variant', 'title'>;
+    options: Attribute.Component<'variations.voptions', true>;
+    product: Attribute.Relation<
+      'api::product-variant.product-variant',
+      'manyToOne',
+      'api::product.product'
+    >;
+    commitedQuantity: Attribute.BigInteger;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product-variant.product-variant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product-variant.product-variant',
       'oneToOne',
       'admin::user'
     > &
@@ -994,9 +1179,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::address.address': ApiAddressAddress;
+      'api::cart.cart': ApiCartCart;
       'api::category.category': ApiCategoryCategory;
-      'api::inventory.inventory': ApiInventoryInventory;
+      'api::collection.collection': ApiCollectionCollection;
+      'api::order.order': ApiOrderOrder;
+      'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::product.product': ApiProductProduct;
+      'api::product-variant.product-variant': ApiProductVariantProductVariant;
       'api::wishlist.wishlist': ApiWishlistWishlist;
     }
   }

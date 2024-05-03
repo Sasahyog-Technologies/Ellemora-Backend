@@ -19,7 +19,8 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
     "strapi-auto-uuid": "^0.0.8",
-    "styled-components": "5.3.3"
+    "styled-components": "5.3.3",
+    "strapi-plugin-transformer": "^3.1.2"
   },
   "author": {
     "name": "A Strapi developer"
