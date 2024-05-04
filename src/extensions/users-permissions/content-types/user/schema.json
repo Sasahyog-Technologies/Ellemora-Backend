@@ -90,6 +90,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "user"
     }
   }
 }

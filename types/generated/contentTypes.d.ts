@@ -784,6 +784,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     birthdate: Attribute.Date;
     profile: Attribute.Media;
+    orders: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::order.order'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -974,6 +979,11 @@ export interface ApiOrderOrder extends Schema.CollectionType {
       'api::order.order',
       'oneToOne',
       'api::order-item.order-item'
+    >;
+    user: Attribute.Relation<
+      'api::order.order',
+      'manyToOne',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
