@@ -782,6 +782,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::wishlist.wishlist'
     >;
+    birthdate: Attribute.Date;
+    profile: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -968,6 +970,11 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     mobileNumber: Attribute.String;
     status: Attribute.String;
     type: Attribute.String;
+    items: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'api::order-item.order-item'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

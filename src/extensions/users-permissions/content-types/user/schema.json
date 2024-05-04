@@ -80,6 +80,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::wishlist.wishlist"
+    },
+    "birthdate": {
+      "type": "date"
+    },
+    "profile": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
