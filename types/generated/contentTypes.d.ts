@@ -934,6 +934,11 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
     name: Attribute.String;
     description: Attribute.Text;
     thumbnail: Attribute.Media;
+    products: Attribute.Relation<
+      'api::collection.collection',
+      'oneToMany',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1077,6 +1082,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToMany',
       'api::category.category'
     >;
+    collection: Attribute.Relation<
+      'api::product.product',
+      'manyToOne',
+      'api::collection.collection'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1153,12 +1163,23 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
     singularName: 'wishlist';
     pluralName: 'wishlists';
     displayName: 'Wishlist';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     label: Attribute.String;
+    product: Attribute.Relation<
+      'api::wishlist.wishlist',
+      'oneToOne',
+      'api::product.product'
+    >;
+    variant: Attribute.Relation<
+      'api::wishlist.wishlist',
+      'oneToOne',
+      'api::product-variant.product-variant'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

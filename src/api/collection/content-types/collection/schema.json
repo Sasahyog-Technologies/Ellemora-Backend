@@ -19,14 +19,21 @@
       "type": "text"
     },
     "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "collection"
     }
   }
 }

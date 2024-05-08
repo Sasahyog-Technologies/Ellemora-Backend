@@ -4,7 +4,8 @@
   "info": {
     "singularName": "wishlist",
     "pluralName": "wishlists",
-    "displayName": "Wishlist"
+    "displayName": "Wishlist",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,16 @@
   "attributes": {
     "label": {
       "type": "string"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "variant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product-variant.product-variant"
     }
   }
 }
