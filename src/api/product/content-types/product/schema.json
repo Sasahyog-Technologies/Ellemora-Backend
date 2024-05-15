@@ -65,6 +65,15 @@
       "relation": "manyToOne",
       "target": "api::collection.collection",
       "inversedBy": "products"
+    },
+    "groupBy": {
+      "type": "string"
+    },
+    "template": {
+      "type": "string"
+    },
+    "details": {
+      "type": "json"
     }
   }
 }

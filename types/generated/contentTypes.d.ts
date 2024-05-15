@@ -1087,6 +1087,9 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToOne',
       'api::collection.collection'
     >;
+    groupBy: Attribute.String;
+    template: Attribute.String;
+    details: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
