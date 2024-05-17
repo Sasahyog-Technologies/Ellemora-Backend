@@ -957,6 +957,38 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
   };
 }
 
+export interface ApiCountryCountry extends Schema.CollectionType {
+  collectionName: 'countries';
+  info: {
+    singularName: 'country';
+    pluralName: 'countries';
+    displayName: 'Country';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    percentage: Attribute.Float;
+    currency: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::country.country',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::country.country',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOrderOrder extends Schema.CollectionType {
   collectionName: 'orders';
   info: {
@@ -1160,6 +1192,36 @@ export interface ApiProductVariantProductVariant extends Schema.CollectionType {
   };
 }
 
+export interface ApiSubCategorySubCategory extends Schema.CollectionType {
+  collectionName: 'sub_categories';
+  info: {
+    singularName: 'sub-category';
+    pluralName: 'sub-categories';
+    displayName: 'SubCategory';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sub-category.sub-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sub-category.sub-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiWishlistWishlist extends Schema.CollectionType {
   collectionName: 'wishlists';
   info: {
@@ -1223,10 +1285,12 @@ declare module '@strapi/types' {
       'api::cart.cart': ApiCartCart;
       'api::category.category': ApiCategoryCategory;
       'api::collection.collection': ApiCollectionCollection;
+      'api::country.country': ApiCountryCountry;
       'api::order.order': ApiOrderOrder;
       'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::product.product': ApiProductProduct;
       'api::product-variant.product-variant': ApiProductVariantProductVariant;
+      'api::sub-category.sub-category': ApiSubCategorySubCategory;
       'api::wishlist.wishlist': ApiWishlistWishlist;
     }
   }
