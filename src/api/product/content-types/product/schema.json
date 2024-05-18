@@ -71,9 +71,6 @@
     },
     "template": {
       "type": "string"
-    },
-    "details": {
-      "type": "json"
     }
   }
 }

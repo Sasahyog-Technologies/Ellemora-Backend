@@ -845,6 +845,45 @@ export interface ApiAddressAddress extends Schema.CollectionType {
   };
 }
 
+export interface ApiAddtionalAddtional extends Schema.CollectionType {
+  collectionName: 'addtionals';
+  info: {
+    singularName: 'addtional';
+    pluralName: 'addtionals';
+    displayName: 'Addtional';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    fit: Attribute.String;
+    length: Attribute.String;
+    sleeveTypes: Attribute.String;
+    neckLine: Attribute.String;
+    components: Attribute.String;
+    numberOfComponents: Attribute.String;
+    febric: Attribute.String;
+    typeOfWork: Attribute.String;
+    care: Attribute.String;
+    disclaimer: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::addtional.addtional',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::addtional.addtional',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCartCart extends Schema.CollectionType {
   collectionName: 'carts';
   info: {
@@ -1121,7 +1160,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
     >;
     groupBy: Attribute.String;
     template: Attribute.String;
-    details: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1282,6 +1320,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::address.address': ApiAddressAddress;
+      'api::addtional.addtional': ApiAddtionalAddtional;
       'api::cart.cart': ApiCartCart;
       'api::category.category': ApiCategoryCategory;
       'api::collection.collection': ApiCollectionCollection;

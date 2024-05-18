@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "addtionals",
+  "info": {
+    "singularName": "addtional",
+    "pluralName": "addtionals",
+    "displayName": "Addtional"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fit": {
+      "type": "string"
+    },
+    "length": {
+      "type": "string"
+    },
+    "sleeveTypes": {
+      "type": "string"
+    },
+    "neckLine": {
+      "type": "string"
+    },
+    "components": {
+      "type": "string"
+    },
+    "numberOfComponents": {
+      "type": "string"
+    },
+    "febric": {
+      "type": "string"
+    },
+    "typeOfWork": {
+      "type": "string"
+    },
+    "care": {
+      "type": "string"
+    },
+    "disclaimer": {
+      "type": "string"
+    }
+  }
+}
