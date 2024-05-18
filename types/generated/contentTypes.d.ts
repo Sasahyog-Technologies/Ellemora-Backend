@@ -1160,6 +1160,12 @@ export interface ApiProductProduct extends Schema.CollectionType {
     >;
     groupBy: Attribute.String;
     template: Attribute.String;
+    addtional: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'api::addtional.addtional'
+    >;
+    tags: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

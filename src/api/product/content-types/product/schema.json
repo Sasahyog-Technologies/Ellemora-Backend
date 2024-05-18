@@ -71,6 +71,14 @@
     },
     "template": {
       "type": "string"
+    },
+    "addtional": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::addtional.addtional"
+    },
+    "tags": {
+      "type": "string"
     }
   }
 }
