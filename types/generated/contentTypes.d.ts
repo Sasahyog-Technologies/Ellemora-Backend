@@ -851,6 +851,7 @@ export interface ApiAddtionalAddtional extends Schema.CollectionType {
     singularName: 'addtional';
     pluralName: 'addtionals';
     displayName: 'Addtional';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -865,7 +866,8 @@ export interface ApiAddtionalAddtional extends Schema.CollectionType {
     febric: Attribute.String;
     typeOfWork: Attribute.String;
     care: Attribute.String;
-    disclaimer: Attribute.String;
+    disclaimer: Attribute.Text;
+    shippingDisclaimer: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

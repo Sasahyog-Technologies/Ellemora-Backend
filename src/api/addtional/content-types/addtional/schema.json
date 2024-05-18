@@ -4,7 +4,8 @@
   "info": {
     "singularName": "addtional",
     "pluralName": "addtionals",
-    "displayName": "Addtional"
+    "displayName": "Addtional",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -39,7 +40,10 @@
       "type": "string"
     },
     "disclaimer": {
-      "type": "string"
+      "type": "text"
+    },
+    "shippingDisclaimer": {
+      "type": "text"
     }
   }
 }
