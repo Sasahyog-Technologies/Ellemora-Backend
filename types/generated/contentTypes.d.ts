@@ -892,6 +892,7 @@ export interface ApiCartCart extends Schema.CollectionType {
     singularName: 'cart';
     pluralName: 'carts';
     displayName: 'Cart';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -912,6 +913,7 @@ export interface ApiCartCart extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    quantity: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

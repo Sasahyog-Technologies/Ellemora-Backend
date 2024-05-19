@@ -4,7 +4,8 @@
   "info": {
     "singularName": "cart",
     "pluralName": "carts",
-    "displayName": "Cart"
+    "displayName": "Cart",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -25,6 +26,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "quantity": {
+      "type": "integer"
     }
   }
 }
