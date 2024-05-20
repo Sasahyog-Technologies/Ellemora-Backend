@@ -944,6 +944,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'manyToMany',
       'api::product.product'
     >;
+    slug: Attribute.UID<'api::category.category', 'name'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -982,6 +983,7 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
+    slug: Attribute.UID<'api::collection.collection', 'name'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
