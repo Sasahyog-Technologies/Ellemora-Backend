@@ -34,6 +34,10 @@
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "collection"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
     }
   }
 }
