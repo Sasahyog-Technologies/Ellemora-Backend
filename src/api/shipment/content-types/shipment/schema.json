@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shipments",
+  "info": {
+    "singularName": "shipment",
+    "pluralName": "shipments",
+    "displayName": "Shipment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "orderId": {
+      "type": "string"
+    },
+    "shipmentId": {
+      "type": "string"
+    },
+    "awbNumber": {
+      "type": "string"
+    },
+    "courierId": {
+      "type": "string"
+    },
+    "courierName": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "additionalInfo": {
+      "type": "string"
+    },
+    "paymentType": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "manifest": {
+      "type": "string"
+    }
+  }
+}

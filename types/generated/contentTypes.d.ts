@@ -1067,6 +1067,22 @@ export interface ApiOrderOrder extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+    request_auto_pickup: Attribute.Boolean;
+    order_amount: Attribute.Decimal;
+    payment_type: Attribute.String;
+    package_length: Attribute.Decimal;
+    package_breadth: Attribute.Decimal;
+    package_height: Attribute.Decimal;
+    cod_charges: Attribute.Decimal;
+    shipping_charges: Attribute.Decimal;
+    courier_id: Attribute.String;
+    isInsurance: Attribute.Boolean;
+    orderId: Attribute.String;
+    shipmentId: Attribute.String;
+    awbNumber: Attribute.String;
+    courierName: Attribute.String;
+    additionalInfo: Attribute.String;
+    manifes: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1117,6 +1133,43 @@ export interface ApiOrderItemOrderItem extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::order-item.order-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPickupLocationPickupLocation extends Schema.CollectionType {
+  collectionName: 'pickup_locations';
+  info: {
+    singularName: 'pickup-location';
+    pluralName: 'pickup-locations';
+    displayName: 'Pickup Location';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    warehouseName: Attribute.String;
+    name: Attribute.String;
+    address: Attribute.String;
+    address_2: Attribute.String;
+    city: Attribute.String;
+    state: Attribute.String;
+    pincode: Attribute.String;
+    phone: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pickup-location.pickup-location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pickup-location.pickup-location',
       'oneToOne',
       'admin::user'
     > &
@@ -1242,6 +1295,45 @@ export interface ApiProductVariantProductVariant extends Schema.CollectionType {
   };
 }
 
+export interface ApiShipmentShipment extends Schema.CollectionType {
+  collectionName: 'shipments';
+  info: {
+    singularName: 'shipment';
+    pluralName: 'shipments';
+    displayName: 'Shipment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    orderId: Attribute.String;
+    shipmentId: Attribute.String;
+    awbNumber: Attribute.String;
+    courierId: Attribute.String;
+    courierName: Attribute.String;
+    status: Attribute.String;
+    additionalInfo: Attribute.String;
+    paymentType: Attribute.String;
+    label: Attribute.String;
+    manifest: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::shipment.shipment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::shipment.shipment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSubCategorySubCategory extends Schema.CollectionType {
   collectionName: 'sub_categories';
   info: {
@@ -1339,8 +1431,10 @@ declare module '@strapi/types' {
       'api::country.country': ApiCountryCountry;
       'api::order.order': ApiOrderOrder;
       'api::order-item.order-item': ApiOrderItemOrderItem;
+      'api::pickup-location.pickup-location': ApiPickupLocationPickupLocation;
       'api::product.product': ApiProductProduct;
       'api::product-variant.product-variant': ApiProductVariantProductVariant;
+      'api::shipment.shipment': ApiShipmentShipment;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
       'api::wishlist.wishlist': ApiWishlistWishlist;
     }

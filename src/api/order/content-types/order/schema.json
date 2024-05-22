@@ -55,6 +55,54 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "orders"
+    },
+    "request_auto_pickup": {
+      "type": "boolean"
+    },
+    "order_amount": {
+      "type": "decimal"
+    },
+    "payment_type": {
+      "type": "string"
+    },
+    "package_length": {
+      "type": "decimal"
+    },
+    "package_breadth": {
+      "type": "decimal"
+    },
+    "package_height": {
+      "type": "decimal"
+    },
+    "cod_charges": {
+      "type": "decimal"
+    },
+    "shipping_charges": {
+      "type": "decimal"
+    },
+    "courier_id": {
+      "type": "string"
+    },
+    "isInsurance": {
+      "type": "boolean"
+    },
+    "orderId": {
+      "type": "string"
+    },
+    "shipmentId": {
+      "type": "string"
+    },
+    "awbNumber": {
+      "type": "string"
+    },
+    "courierName": {
+      "type": "string"
+    },
+    "additionalInfo": {
+      "type": "string"
+    },
+    "manifes": {
+      "type": "string"
     }
   }
 }
