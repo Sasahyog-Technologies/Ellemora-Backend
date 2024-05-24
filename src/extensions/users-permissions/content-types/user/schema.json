@@ -76,20 +76,22 @@
       "relation": "oneToMany",
       "target": "api::address.address"
     },
-    "wishlist": {
+    "wishlists": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::wishlist.wishlist"
+      "target": "api::wishlist.wishlist",
+      "mappedBy": "user"
     },
     "birthdate": {
       "type": "date"
     },
     "profile": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "orders": {
       "type": "relation",

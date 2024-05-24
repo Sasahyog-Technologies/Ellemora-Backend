@@ -24,6 +24,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::product-variant.product-variant"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "wishlists"
     }
   }
 }
