@@ -1093,7 +1093,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     type: Attribute.String;
     items: Attribute.Relation<
       'api::order.order',
-      'oneToOne',
+      'oneToMany',
       'api::order-item.order-item'
     >;
     user: Attribute.Relation<
@@ -1155,6 +1155,11 @@ export interface ApiOrderItemOrderItem extends Schema.CollectionType {
       'api::order-item.order-item',
       'oneToOne',
       'api::product-variant.product-variant'
+    >;
+    order: Attribute.Relation<
+      'api::order-item.order-item',
+      'manyToOne',
+      'api::order.order'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

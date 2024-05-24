@@ -47,8 +47,9 @@
     },
     "items": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::order-item.order-item"
+      "relation": "oneToMany",
+      "target": "api::order-item.order-item",
+      "mappedBy": "order"
     },
     "user": {
       "type": "relation",
