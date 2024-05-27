@@ -1264,6 +1264,17 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::addtional.addtional'
     >;
     tags: Attribute.String;
+    fit: Attribute.String;
+    length: Attribute.String;
+    sleeveTypes: Attribute.String;
+    neckLine: Attribute.String;
+    components: Attribute.String;
+    numberOfComponents: Attribute.String;
+    febric: Attribute.String;
+    typeOfWork: Attribute.String;
+    care: Attribute.String;
+    disclaimer: Attribute.Text;
+    shippingDisclaimer: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

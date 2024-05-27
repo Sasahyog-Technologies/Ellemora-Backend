@@ -79,6 +79,39 @@
     },
     "tags": {
       "type": "string"
+    },
+    "fit": {
+      "type": "string"
+    },
+    "length": {
+      "type": "string"
+    },
+    "sleeveTypes": {
+      "type": "string"
+    },
+    "neckLine": {
+      "type": "string"
+    },
+    "components": {
+      "type": "string"
+    },
+    "numberOfComponents": {
+      "type": "string"
+    },
+    "febric": {
+      "type": "string"
+    },
+    "typeOfWork": {
+      "type": "string"
+    },
+    "care": {
+      "type": "string"
+    },
+    "disclaimer": {
+      "type": "text"
+    },
+    "shippingDisclaimer": {
+      "type": "text"
     }
   }
 }
