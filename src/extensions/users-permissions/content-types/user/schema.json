@@ -98,6 +98,15 @@
       "relation": "oneToMany",
       "target": "api::order.order",
       "mappedBy": "user"
+    },
+    "dob": {
+      "type": "string"
+    },
+    "anniversary": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
     }
   }
 }
