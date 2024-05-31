@@ -74,7 +74,8 @@
     "addresses": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::address.address"
+      "target": "api::address.address",
+      "mappedBy": "user"
     },
     "wishlists": {
       "type": "relation",
@@ -98,6 +99,15 @@
       "relation": "oneToMany",
       "target": "api::order.order",
       "mappedBy": "user"
+    },
+    "dob": {
+      "type": "string"
+    },
+    "anniversary": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
     }
   }
 }

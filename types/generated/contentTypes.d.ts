@@ -789,6 +789,9 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::order.order'
     >;
+    dob: Attribute.String;
+    anniversary: Attribute.String;
+    gender: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -827,6 +830,11 @@ export interface ApiAddressAddress extends Schema.CollectionType {
     country: Attribute.String;
     mobileNumber: Attribute.String;
     label: Attribute.String;
+    user: Attribute.Relation<
+      'api::address.address',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
