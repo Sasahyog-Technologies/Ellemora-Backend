@@ -1117,6 +1117,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     courierName: Attribute.String;
     additionalInfo: Attribute.String;
     manifes: Attribute.String;
+    quantity: Attribute.BigInteger;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

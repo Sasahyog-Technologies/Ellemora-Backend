@@ -104,6 +104,9 @@
     },
     "manifes": {
       "type": "string"
+    },
+    "quantity": {
+      "type": "biginteger"
     }
   }
 }
