@@ -1027,6 +1027,12 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
     >;
     slug: Attribute.UID<'api::collection.collection', 'name'>;
     down: Attribute.Boolean;
+    categories: Attribute.Relation<
+      'api::collection.collection',
+      'oneToMany',
+      'api::category.category'
+    >;
+    listing: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

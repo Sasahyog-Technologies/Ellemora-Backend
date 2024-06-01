@@ -41,6 +41,15 @@
     },
     "down": {
       "type": "boolean"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "listing": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
