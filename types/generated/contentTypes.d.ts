@@ -1226,6 +1226,30 @@ export interface ApiPickupLocationPickupLocation extends Schema.CollectionType {
   };
 }
 
+export interface ApiPostPost extends Schema.CollectionType {
+  collectionName: 'posts';
+  info: {
+    singularName: 'post';
+    pluralName: 'posts';
+    displayName: 'Post';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    hashtag: Attribute.String;
+    description: Attribute.Text;
+    media: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -1498,6 +1522,7 @@ declare module '@strapi/types' {
       'api::order.order': ApiOrderOrder;
       'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::pickup-location.pickup-location': ApiPickupLocationPickupLocation;
+      'api::post.post': ApiPostPost;
       'api::product.product': ApiProductProduct;
       'api::product-variant.product-variant': ApiProductVariantProductVariant;
       'api::shipment.shipment': ApiShipmentShipment;
