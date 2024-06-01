@@ -1026,6 +1026,7 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
       'api::product.product'
     >;
     slug: Attribute.UID<'api::collection.collection', 'name'>;
+    down: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1155,6 +1156,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     courierName: Attribute.String;
     additionalInfo: Attribute.String;
     manifes: Attribute.String;
+    quantity: Attribute.BigInteger;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
