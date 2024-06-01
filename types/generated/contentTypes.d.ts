@@ -1026,6 +1026,7 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
       'api::product.product'
     >;
     slug: Attribute.UID<'api::collection.collection', 'name'>;
+    down: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

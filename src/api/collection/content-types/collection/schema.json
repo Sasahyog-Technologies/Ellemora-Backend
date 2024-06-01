@@ -38,6 +38,9 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "down": {
+      "type": "boolean"
     }
   }
 }
