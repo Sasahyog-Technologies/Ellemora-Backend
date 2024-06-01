@@ -1076,6 +1076,36 @@ export interface ApiCountryCountry extends Schema.CollectionType {
   };
 }
 
+export interface ApiCustomCustom extends Schema.CollectionType {
+  collectionName: 'customs';
+  info: {
+    singularName: 'custom';
+    pluralName: 'customs';
+    displayName: 'custom';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    temp: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::custom.custom',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::custom.custom',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOrderOrder extends Schema.CollectionType {
   collectionName: 'orders';
   info: {
@@ -1493,6 +1523,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::collection.collection': ApiCollectionCollection;
       'api::country.country': ApiCountryCountry;
+      'api::custom.custom': ApiCustomCustom;
       'api::order.order': ApiOrderOrder;
       'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::pickup-location.pickup-location': ApiPickupLocationPickupLocation;
