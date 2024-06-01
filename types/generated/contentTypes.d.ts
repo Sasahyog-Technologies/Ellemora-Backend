@@ -1027,6 +1027,12 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
     >;
     slug: Attribute.UID<'api::collection.collection', 'name'>;
     down: Attribute.Boolean;
+    categories: Attribute.Relation<
+      'api::collection.collection',
+      'oneToMany',
+      'api::category.category'
+    >;
+    listing: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1070,6 +1076,36 @@ export interface ApiCountryCountry extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::country.country',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCustomCustom extends Schema.CollectionType {
+  collectionName: 'customs';
+  info: {
+    singularName: 'custom';
+    pluralName: 'customs';
+    displayName: 'custom';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    temp: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::custom.custom',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::custom.custom',
       'oneToOne',
       'admin::user'
     > &
@@ -1519,6 +1555,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::collection.collection': ApiCollectionCollection;
       'api::country.country': ApiCountryCountry;
+      'api::custom.custom': ApiCustomCustom;
       'api::order.order': ApiOrderOrder;
       'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::pickup-location.pickup-location': ApiPickupLocationPickupLocation;
