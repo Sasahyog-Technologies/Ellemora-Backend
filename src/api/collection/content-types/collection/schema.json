@@ -47,7 +47,7 @@
       "relation": "oneToMany",
       "target": "api::category.category"
     },
-    "listing": {
+    "categoryListing": {
       "type": "boolean",
       "default": false
     }
