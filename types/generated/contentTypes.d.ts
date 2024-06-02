@@ -1268,6 +1268,7 @@ export interface ApiPostPost extends Schema.CollectionType {
     singularName: 'post';
     pluralName: 'posts';
     displayName: 'Post';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1276,6 +1277,7 @@ export interface ApiPostPost extends Schema.CollectionType {
     hashtag: Attribute.String;
     description: Attribute.Text;
     media: Attribute.Media;
+    route: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
