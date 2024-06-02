@@ -1032,7 +1032,8 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
       'oneToMany',
       'api::category.category'
     >;
-    categoryListing: Attribute.Boolean & Attribute.DefaultTo<false>;
+    isCategory: Attribute.Boolean & Attribute.DefaultTo<false>;
+    desktopOnly: Attribute.Boolean & Attribute.DefaultTo<true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
