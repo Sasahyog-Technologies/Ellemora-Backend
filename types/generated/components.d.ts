@@ -1,5 +1,39 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface BodyMeasurementBodyMeasurement extends Schema.Component {
+  collectionName: 'components_body_measurement_body_measurements';
+  info: {
+    displayName: 'body measurement';
+    icon: 'archive';
+  };
+  attributes: {
+    topLength: Attribute.String;
+    shoulder: Attribute.String;
+    armhole: Attribute.String;
+    acrossBack: Attribute.String;
+    UpperBustAcrossFront: Attribute.String;
+    bust: Attribute.String;
+    underBust: Attribute.String;
+    shoulderToApex: Attribute.String;
+    ArmElbowWrist: Attribute.String;
+    lowWaist: Attribute.String;
+    waist: Attribute.String;
+    shoulderToHip: Attribute.String;
+    hip: Attribute.String;
+    shoulderToWaist: Attribute.String;
+    collar: Attribute.String;
+    NeckFB: Attribute.String;
+    thigh: Attribute.String;
+    knee: Attribute.String;
+    calf: Attribute.String;
+    waistToThigh: Attribute.String;
+    waistToKnee: Attribute.String;
+    waistToCalf: Attribute.String;
+    waistToAnkle: Attribute.String;
+    fullbodyLength: Attribute.String;
+  };
+}
+
 export interface VariationsOptions extends Schema.Component {
   collectionName: 'components_variations_options';
   info: {
@@ -64,6 +98,7 @@ export interface VariationsVoptions extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'body-measurement.body-measurement': BodyMeasurementBodyMeasurement;
       'variations.options': VariationsOptions;
       'variations.values': VariationsValues;
       'variations.variants': VariationsVariants;

@@ -1,0 +1,79 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customizations",
+  "info": {
+    "singularName": "customization",
+    "pluralName": "customizations",
+    "displayName": "Customization",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fullName": {
+      "type": "string"
+    },
+    "mobile": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "ocassion": {
+      "type": "string"
+    },
+    "style": {
+      "type": "string"
+    },
+    "budget": {
+      "type": "biginteger"
+    },
+    "preferredDate": {
+      "type": "datetime"
+    },
+    "requestMedia": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "callVerification": {
+      "type": "boolean"
+    },
+    "linkSended": {
+      "type": "boolean"
+    },
+    "detailsConfimation": {
+      "type": "boolean"
+    },
+    "detailConfimationStatus": {
+      "type": "string"
+    },
+    "firstHalfPaymentConfirmation": {
+      "type": "boolean"
+    },
+    "bodyMeasurement": {
+      "displayName": "body measurement",
+      "type": "component",
+      "repeatable": false,
+      "component": "body-measurement.body-measurement"
+    },
+    "responseMedia": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

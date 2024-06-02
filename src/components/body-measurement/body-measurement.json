@@ -1,0 +1,82 @@
+{
+  "collectionName": "components_body_measurement_body_measurements",
+  "info": {
+    "displayName": "body measurement",
+    "icon": "archive"
+  },
+  "options": {},
+  "attributes": {
+    "topLength": {
+      "type": "string"
+    },
+    "shoulder": {
+      "type": "string"
+    },
+    "armhole": {
+      "type": "string"
+    },
+    "acrossBack": {
+      "type": "string"
+    },
+    "UpperBustAcrossFront": {
+      "type": "string"
+    },
+    "bust": {
+      "type": "string"
+    },
+    "underBust": {
+      "type": "string"
+    },
+    "shoulderToApex": {
+      "type": "string"
+    },
+    "ArmElbowWrist": {
+      "type": "string"
+    },
+    "lowWaist": {
+      "type": "string"
+    },
+    "waist": {
+      "type": "string"
+    },
+    "shoulderToHip": {
+      "type": "string"
+    },
+    "hip": {
+      "type": "string"
+    },
+    "shoulderToWaist": {
+      "type": "string"
+    },
+    "collar": {
+      "type": "string"
+    },
+    "NeckFB": {
+      "type": "string"
+    },
+    "thigh": {
+      "type": "string"
+    },
+    "knee": {
+      "type": "string"
+    },
+    "calf": {
+      "type": "string"
+    },
+    "waistToThigh": {
+      "type": "string"
+    },
+    "waistToKnee": {
+      "type": "string"
+    },
+    "waistToCalf": {
+      "type": "string"
+    },
+    "waistToAnkle": {
+      "type": "string"
+    },
+    "fullbodyLength": {
+      "type": "string"
+    }
+  }
+}

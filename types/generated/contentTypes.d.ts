@@ -1113,6 +1113,51 @@ export interface ApiCustomCustom extends Schema.CollectionType {
   };
 }
 
+export interface ApiCustomizationCustomization extends Schema.CollectionType {
+  collectionName: 'customizations';
+  info: {
+    singularName: 'customization';
+    pluralName: 'customizations';
+    displayName: 'Customization';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    fullName: Attribute.String;
+    mobile: Attribute.String;
+    email: Attribute.Email;
+    ocassion: Attribute.String;
+    style: Attribute.String;
+    budget: Attribute.BigInteger;
+    preferredDate: Attribute.DateTime;
+    requestMedia: Attribute.Media;
+    callVerification: Attribute.Boolean;
+    linkSended: Attribute.Boolean;
+    detailsConfimation: Attribute.Boolean;
+    detailConfimationStatus: Attribute.String;
+    firstHalfPaymentConfirmation: Attribute.Boolean;
+    bodyMeasurement: Attribute.Component<'body-measurement.body-measurement'>;
+    responseMedia: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::customization.customization',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::customization.customization',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOrderOrder extends Schema.CollectionType {
   collectionName: 'orders';
   info: {
@@ -1532,6 +1577,7 @@ declare module '@strapi/types' {
       'api::collection.collection': ApiCollectionCollection;
       'api::country.country': ApiCountryCountry;
       'api::custom.custom': ApiCustomCustom;
+      'api::customization.customization': ApiCustomizationCustomization;
       'api::order.order': ApiOrderOrder;
       'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::pickup-location.pickup-location': ApiPickupLocationPickupLocation;
