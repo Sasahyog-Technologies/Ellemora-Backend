@@ -66,14 +66,18 @@
       "component": "body-measurement.body-measurement"
     },
     "responseMedia": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "comments": {
+      "type": "string"
     }
   }
 }

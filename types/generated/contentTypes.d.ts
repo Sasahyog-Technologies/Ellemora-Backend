@@ -1140,6 +1140,7 @@ export interface ApiCustomizationCustomization extends Schema.CollectionType {
     firstHalfPaymentConfirmation: Attribute.Boolean;
     bodyMeasurement: Attribute.Component<'body-measurement.body-measurement'>;
     responseMedia: Attribute.Media;
+    comments: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
