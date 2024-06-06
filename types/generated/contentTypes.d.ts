@@ -1147,6 +1147,7 @@ export interface ApiCustomizationCustomization extends Schema.CollectionType {
     colorMedia: Attribute.Media;
     febricMedia: Attribute.Media;
     printMedia: Attribute.Media;
+    cost: Attribute.BigInteger;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
