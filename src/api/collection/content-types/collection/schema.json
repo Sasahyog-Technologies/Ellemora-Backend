@@ -47,9 +47,13 @@
       "relation": "oneToMany",
       "target": "api::category.category"
     },
-    "categoryListing": {
+    "isCategory": {
       "type": "boolean",
       "default": false
+    },
+    "desktopOnly": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
