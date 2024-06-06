@@ -910,6 +910,7 @@ export interface ApiBannerBanner extends Schema.CollectionType {
     image: Attribute.Media;
     link: Attribute.String;
     type: Attribute.Enumeration<['large', 'small']>;
+    Image2: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
