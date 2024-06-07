@@ -1035,6 +1035,7 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
     >;
     isCategory: Attribute.Boolean & Attribute.DefaultTo<false>;
     desktopOnly: Attribute.Boolean & Attribute.DefaultTo<true>;
+    style: Attribute.Enumeration<['normal', 'styled']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

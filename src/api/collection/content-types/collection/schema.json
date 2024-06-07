@@ -54,6 +54,13 @@
     "desktopOnly": {
       "type": "boolean",
       "default": true
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "normal",
+        "styled"
+      ]
     }
   }
 }
