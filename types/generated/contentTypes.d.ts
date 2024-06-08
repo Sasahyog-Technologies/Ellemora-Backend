@@ -1366,7 +1366,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
     material: Attribute.String;
     discountable: Attribute.Boolean;
     variations: Attribute.Component<'variations.options', true>;
-    variant: Attribute.Component<'variations.variants', true>;
     variants: Attribute.Relation<
       'api::product.product',
       'oneToMany',
@@ -1384,11 +1383,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
     >;
     groupBy: Attribute.String;
     template: Attribute.String;
-    addtional: Attribute.Relation<
-      'api::product.product',
-      'oneToOne',
-      'api::addtional.addtional'
-    >;
     tags: Attribute.String;
     fit: Attribute.String;
     length: Attribute.String;
@@ -1401,6 +1395,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     care: Attribute.String;
     disclaimer: Attribute.Text;
     shippingDisclaimer: Attribute.Text;
+    media: Attribute.Component<'variations.color-images', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

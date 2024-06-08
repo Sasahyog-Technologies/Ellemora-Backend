@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_variations_color_images",
+  "info": {
+    "displayName": "ColorImages"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

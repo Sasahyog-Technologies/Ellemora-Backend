@@ -2,11 +2,15 @@
   "collectionName": "components_variations_values",
   "info": {
     "displayName": "values",
-    "icon": "apps"
+    "icon": "apps",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "value": {
+      "type": "string"
+    },
+    "code": {
       "type": "string"
     }
   }

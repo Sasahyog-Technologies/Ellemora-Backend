@@ -42,12 +42,6 @@
       "repeatable": true,
       "component": "variations.options"
     },
-    "variant": {
-      "displayName": "variants",
-      "type": "component",
-      "repeatable": true,
-      "component": "variations.variants"
-    },
     "variants": {
       "type": "relation",
       "relation": "oneToMany",
@@ -71,11 +65,6 @@
     },
     "template": {
       "type": "string"
-    },
-    "addtional": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::addtional.addtional"
     },
     "tags": {
       "type": "string"
@@ -112,6 +101,11 @@
     },
     "shippingDisclaimer": {
       "type": "text"
+    },
+    "media": {
+      "type": "component",
+      "repeatable": true,
+      "component": "variations.color-images"
     }
   }
 }

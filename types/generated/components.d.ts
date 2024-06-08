@@ -34,6 +34,17 @@ export interface BodyMeasurementBodyMeasurement extends Schema.Component {
   };
 }
 
+export interface VariationsColorImages extends Schema.Component {
+  collectionName: 'components_variations_color_images';
+  info: {
+    displayName: 'ColorImages';
+  };
+  attributes: {
+    name: Attribute.String;
+    media: Attribute.Media;
+  };
+}
+
 export interface VariationsOptions extends Schema.Component {
   collectionName: 'components_variations_options';
   info: {
@@ -51,9 +62,11 @@ export interface VariationsValues extends Schema.Component {
   info: {
     displayName: 'values';
     icon: 'apps';
+    description: '';
   };
   attributes: {
     value: Attribute.String;
+    code: Attribute.String;
   };
 }
 
@@ -99,6 +112,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'body-measurement.body-measurement': BodyMeasurementBodyMeasurement;
+      'variations.color-images': VariationsColorImages;
       'variations.options': VariationsOptions;
       'variations.values': VariationsValues;
       'variations.variants': VariationsVariants;
