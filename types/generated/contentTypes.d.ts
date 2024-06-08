@@ -1210,6 +1210,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     additionalInfo: Attribute.String;
     manifes: Attribute.String;
     quantity: Attribute.BigInteger;
+    package_weight: Attribute.Decimal;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

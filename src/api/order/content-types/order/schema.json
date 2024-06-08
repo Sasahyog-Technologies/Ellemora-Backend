@@ -107,6 +107,9 @@
     },
     "quantity": {
       "type": "biginteger"
+    },
+    "package_weight": {
+      "type": "decimal"
     }
   }
 }
