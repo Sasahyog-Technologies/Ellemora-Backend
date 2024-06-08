@@ -910,6 +910,7 @@ export interface ApiBannerBanner extends Schema.CollectionType {
     image: Attribute.Media;
     link: Attribute.String;
     type: Attribute.Enumeration<['large', 'small']>;
+    Image2: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1034,6 +1035,7 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
     >;
     isCategory: Attribute.Boolean & Attribute.DefaultTo<false>;
     desktopOnly: Attribute.Boolean & Attribute.DefaultTo<true>;
+    style: Attribute.Enumeration<['normal', 'styled']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1142,6 +1144,11 @@ export interface ApiCustomizationCustomization extends Schema.CollectionType {
     bodyMeasurement: Attribute.Component<'body-measurement.body-measurement'>;
     responseMedia: Attribute.Media;
     comments: Attribute.String;
+    styleMedia: Attribute.Media;
+    colorMedia: Attribute.Media;
+    febricMedia: Attribute.Media;
+    printMedia: Attribute.Media;
+    cost: Attribute.BigInteger;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
