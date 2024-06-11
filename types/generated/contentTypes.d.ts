@@ -1292,6 +1292,7 @@ export interface ApiPaymentPayment extends Schema.CollectionType {
     singularName: 'payment';
     pluralName: 'payments';
     displayName: 'Payment';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1310,6 +1311,8 @@ export interface ApiPaymentPayment extends Schema.CollectionType {
       'api::order.order'
     >;
     status: Attribute.String;
+    customizationId: Attribute.BigInteger;
+    label: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
