@@ -43,6 +43,12 @@
         "videos",
         "audios"
       ]
+    },
+    "slides": {
+      "displayName": "slides",
+      "type": "component",
+      "repeatable": true,
+      "component": "slides.slides"
     }
   }
 }

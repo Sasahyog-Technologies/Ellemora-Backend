@@ -911,6 +911,7 @@ export interface ApiBannerBanner extends Schema.CollectionType {
     link: Attribute.String;
     type: Attribute.Enumeration<['large', 'small']>;
     Image2: Attribute.Media;
+    slides: Attribute.Component<'slides.slides', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
