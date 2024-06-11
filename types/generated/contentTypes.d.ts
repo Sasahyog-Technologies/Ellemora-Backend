@@ -1219,6 +1219,11 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     manifes: Attribute.String;
     quantity: Attribute.BigInteger;
     package_weight: Attribute.Decimal;
+    payment: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'api::payment.payment'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1274,6 +1279,48 @@ export interface ApiOrderItemOrderItem extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::order-item.order-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPaymentPayment extends Schema.CollectionType {
+  collectionName: 'payments';
+  info: {
+    singularName: 'payment';
+    pluralName: 'payments';
+    displayName: 'Payment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    paymentId: Attribute.String;
+    paymentType: Attribute.String;
+    user: Attribute.Relation<
+      'api::payment.payment',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    order: Attribute.Relation<
+      'api::payment.payment',
+      'oneToOne',
+      'api::order.order'
+    >;
+    status: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::payment.payment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::payment.payment',
       'oneToOne',
       'admin::user'
     > &
@@ -1616,6 +1663,7 @@ declare module '@strapi/types' {
       'api::customization.customization': ApiCustomizationCustomization;
       'api::order.order': ApiOrderOrder;
       'api::order-item.order-item': ApiOrderItemOrderItem;
+      'api::payment.payment': ApiPaymentPayment;
       'api::pickup-location.pickup-location': ApiPickupLocationPickupLocation;
       'api::post.post': ApiPostPost;
       'api::product.product': ApiProductProduct;

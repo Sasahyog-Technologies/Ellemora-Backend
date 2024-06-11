@@ -110,6 +110,12 @@
     },
     "package_weight": {
       "type": "decimal"
+    },
+    "payment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::payment.payment",
+      "mappedBy": "order"
     }
   }
 }
