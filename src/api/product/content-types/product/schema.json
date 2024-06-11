@@ -108,21 +108,24 @@
       "repeatable": true,
       "component": "variations.color-images"
     },
-    "weight": {
+    "package_weight": {
       "type": "string",
       "default": "0"
     },
-    "height": {
+    "package_height": {
       "type": "string",
       "default": "0"
     },
-    "width": {
+    "package_width": {
       "type": "string",
       "default": "0"
     },
-    "breadth": {
+    "package_breadth": {
       "type": "string",
       "default": "0"
+    },
+    "package_length": {
+      "type": "string"
     }
   }
 }

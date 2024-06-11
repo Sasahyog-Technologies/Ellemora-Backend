@@ -1398,10 +1398,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
     disclaimer: Attribute.Text;
     shippingDisclaimer: Attribute.Text;
     media: Attribute.Component<'variations.color-images', true>;
-    weight: Attribute.String & Attribute.DefaultTo<'0'>;
-    height: Attribute.String & Attribute.DefaultTo<'0'>;
-    width: Attribute.String & Attribute.DefaultTo<'0'>;
-    breadth: Attribute.String & Attribute.DefaultTo<'0'>;
+    package_weight: Attribute.String & Attribute.DefaultTo<'0'>;
+    package_height: Attribute.String & Attribute.DefaultTo<'0'>;
+    package_width: Attribute.String & Attribute.DefaultTo<'0'>;
+    package_breadth: Attribute.String & Attribute.DefaultTo<'0'>;
+    package_length: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
