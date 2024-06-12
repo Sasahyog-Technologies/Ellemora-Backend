@@ -1449,6 +1449,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     package_width: Attribute.String & Attribute.DefaultTo<'0'>;
     package_breadth: Attribute.String & Attribute.DefaultTo<'0'>;
     package_length: Attribute.String;
+    label: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
