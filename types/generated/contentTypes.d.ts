@@ -1406,11 +1406,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 50;
-      }>;
+    title: Attribute.Text & Attribute.Required;
     subTitle: Attribute.Text;
     description: Attribute.Text;
     slug: Attribute.UID<'api::product.product', 'subTitle'>;

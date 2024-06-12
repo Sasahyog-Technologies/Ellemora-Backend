@@ -14,8 +14,7 @@
   "attributes": {
     "title": {
       "type": "text",
-      "required": true,
-      "maxLength": 50
+      "required": true
     },
     "subTitle": {
       "type": "text"
