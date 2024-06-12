@@ -13,12 +13,12 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string",
+      "type": "text",
       "required": true,
       "maxLength": 50
     },
     "subTitle": {
-      "type": "string"
+      "type": "text"
     },
     "description": {
       "type": "text"
@@ -67,7 +67,7 @@
       "type": "string"
     },
     "tags": {
-      "type": "string"
+      "type": "text"
     },
     "fit": {
       "type": "string"

@@ -38,10 +38,12 @@ export interface SlidesSlides extends Schema.Component {
   collectionName: 'components_slides_slides';
   info: {
     displayName: 'slides';
+    description: '';
   };
   attributes: {
     link: Attribute.String;
     media: Attribute.Media;
+    mobileMedia: Attribute.Media;
   };
 }
 

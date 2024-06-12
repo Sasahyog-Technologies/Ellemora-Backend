@@ -1406,12 +1406,12 @@ export interface ApiProductProduct extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String &
+    title: Attribute.Text &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
         maxLength: 50;
       }>;
-    subTitle: Attribute.String;
+    subTitle: Attribute.Text;
     description: Attribute.Text;
     slug: Attribute.UID<'api::product.product', 'subTitle'>;
     originCountry: Attribute.String;
@@ -1435,7 +1435,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     >;
     groupBy: Attribute.String;
     template: Attribute.String;
-    tags: Attribute.String;
+    tags: Attribute.Text;
     fit: Attribute.String;
     length: Attribute.String & Attribute.DefaultTo<'0'>;
     sleeveTypes: Attribute.String;

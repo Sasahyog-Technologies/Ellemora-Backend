@@ -1,7 +1,8 @@
 {
   "collectionName": "components_slides_slides",
   "info": {
-    "displayName": "slides"
+    "displayName": "slides",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,6 +10,17 @@
       "type": "string"
     },
     "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "mobileMedia": {
       "allowedTypes": [
         "images",
         "files",
