@@ -44,6 +44,7 @@ export interface SlidesSlides extends Schema.Component {
     link: Attribute.String;
     media: Attribute.Media;
     mobileMedia: Attribute.Media;
+    mobileLink: Attribute.String;
   };
 }
 
