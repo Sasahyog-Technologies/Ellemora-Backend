@@ -87,6 +87,9 @@
     },
     "commitedQuantity": {
       "type": "biginteger"
+    },
+    "discountedPrice": {
+      "type": "decimal"
     }
   }
 }

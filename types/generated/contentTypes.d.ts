@@ -1502,6 +1502,7 @@ export interface ApiProductVariantProductVariant extends Schema.CollectionType {
       'api::product.product'
     >;
     commitedQuantity: Attribute.BigInteger;
+    discountedPrice: Attribute.Decimal;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
