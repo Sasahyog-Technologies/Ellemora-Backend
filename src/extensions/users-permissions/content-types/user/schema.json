@@ -108,6 +108,12 @@
     },
     "gender": {
       "type": "string"
+    },
+    "tikets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tiket.tiket",
+      "mappedBy": "customer"
     }
   }
 }

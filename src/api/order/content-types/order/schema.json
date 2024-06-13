@@ -116,6 +116,12 @@
       "relation": "oneToOne",
       "target": "api::payment.payment",
       "mappedBy": "order"
+    },
+    "tickets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tiket.tiket",
+      "mappedBy": "order"
     }
   }
 }

@@ -792,6 +792,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     dob: Attribute.String;
     anniversary: Attribute.String;
     gender: Attribute.String;
+    tikets: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::tiket.tiket'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1224,6 +1229,11 @@ export interface ApiOrderOrder extends Schema.CollectionType {
       'oneToOne',
       'api::payment.payment'
     >;
+    tickets: Attribute.Relation<
+      'api::order.order',
+      'oneToMany',
+      'api::tiket.tiket'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1590,6 +1600,53 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiTiketTiket extends Schema.CollectionType {
+  collectionName: 'tikets';
+  info: {
+    singularName: 'tiket';
+    pluralName: 'tikets';
+    displayName: 'Tiket';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    label: Attribute.String;
+    title: Attribute.String;
+    customer: Attribute.Relation<
+      'api::tiket.tiket',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    order: Attribute.Relation<
+      'api::tiket.tiket',
+      'manyToOne',
+      'api::order.order'
+    >;
+    reason: Attribute.Text;
+    status: Attribute.String;
+    refundableAmount: Attribute.BigInteger;
+    type: Attribute.Text;
+    ticketId: Attribute.UID & Attribute.CustomField<'plugin::field-uuid.uuid'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tiket.tiket',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tiket.tiket',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiWishlistWishlist extends Schema.CollectionType {
   collectionName: 'wishlists';
   info: {
@@ -1672,6 +1729,7 @@ declare module '@strapi/types' {
       'api::product-variant.product-variant': ApiProductVariantProductVariant;
       'api::shipment.shipment': ApiShipmentShipment;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
+      'api::tiket.tiket': ApiTiketTiket;
       'api::wishlist.wishlist': ApiWishlistWishlist;
     }
   }
