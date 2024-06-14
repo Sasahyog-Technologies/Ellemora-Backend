@@ -37,6 +37,9 @@
     },
     "label": {
       "type": "string"
+    },
+    "amount": {
+      "type": "float"
     }
   }
 }

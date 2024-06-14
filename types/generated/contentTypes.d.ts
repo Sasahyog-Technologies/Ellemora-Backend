@@ -1323,6 +1323,7 @@ export interface ApiPaymentPayment extends Schema.CollectionType {
     status: Attribute.String;
     customizationId: Attribute.BigInteger;
     label: Attribute.String;
+    amount: Attribute.Float;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
