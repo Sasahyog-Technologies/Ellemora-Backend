@@ -23,11 +23,11 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "order": {
+    "orders": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::order.order",
-      "inversedBy": "payment"
+      "mappedBy": "payment"
     },
     "status": {
       "type": "string"

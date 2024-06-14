@@ -111,17 +111,17 @@
     "package_weight": {
       "type": "decimal"
     },
-    "payment": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::payment.payment",
-      "mappedBy": "order"
-    },
     "tickets": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::tiket.tiket",
       "mappedBy": "order"
+    },
+    "payment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::payment.payment",
+      "inversedBy": "orders"
     }
   }
 }

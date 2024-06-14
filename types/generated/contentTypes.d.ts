@@ -1224,15 +1224,15 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     manifes: Attribute.String;
     quantity: Attribute.BigInteger;
     package_weight: Attribute.Decimal;
-    payment: Attribute.Relation<
-      'api::order.order',
-      'oneToOne',
-      'api::payment.payment'
-    >;
     tickets: Attribute.Relation<
       'api::order.order',
       'oneToMany',
       'api::tiket.tiket'
+    >;
+    payment: Attribute.Relation<
+      'api::order.order',
+      'manyToOne',
+      'api::payment.payment'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1315,9 +1315,9 @@ export interface ApiPaymentPayment extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    order: Attribute.Relation<
+    orders: Attribute.Relation<
       'api::payment.payment',
-      'oneToOne',
+      'oneToMany',
       'api::order.order'
     >;
     status: Attribute.String;
