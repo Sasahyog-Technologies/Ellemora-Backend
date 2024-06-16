@@ -40,6 +40,13 @@
     },
     "amount": {
       "type": "float"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "order",
+        "customization"
+      ]
     }
   }
 }

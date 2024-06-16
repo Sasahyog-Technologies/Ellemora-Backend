@@ -1324,6 +1324,7 @@ export interface ApiPaymentPayment extends Schema.CollectionType {
     customizationId: Attribute.BigInteger;
     label: Attribute.String;
     amount: Attribute.Float;
+    type: Attribute.Enumeration<['order', 'customization']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1461,6 +1462,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
     package_breadth: Attribute.String & Attribute.DefaultTo<'0'>;
     package_length: Attribute.String;
     label: Attribute.Text;
+    discountType: Attribute.String;
+    discountValue: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

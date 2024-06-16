@@ -128,6 +128,12 @@
     },
     "label": {
       "type": "text"
+    },
+    "discountType": {
+      "type": "string"
+    },
+    "discountValue": {
+      "type": "string"
     }
   }
 }
