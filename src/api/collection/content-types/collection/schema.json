@@ -29,12 +29,6 @@
         "audios"
       ]
     },
-    "products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product",
-      "mappedBy": "collection"
-    },
     "slug": {
       "type": "uid",
       "targetField": "name"
@@ -61,6 +55,12 @@
         "normal",
         "styled"
       ]
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "collections"
     }
   }
 }

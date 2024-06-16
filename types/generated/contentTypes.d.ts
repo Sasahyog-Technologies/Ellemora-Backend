@@ -1027,11 +1027,6 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
     name: Attribute.String;
     description: Attribute.Text;
     thumbnail: Attribute.Media;
-    products: Attribute.Relation<
-      'api::collection.collection',
-      'oneToMany',
-      'api::product.product'
-    >;
     slug: Attribute.UID<'api::collection.collection', 'name'>;
     down: Attribute.Boolean;
     categories: Attribute.Relation<
@@ -1042,6 +1037,11 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
     isCategory: Attribute.Boolean & Attribute.DefaultTo<false>;
     desktopOnly: Attribute.Boolean & Attribute.DefaultTo<true>;
     style: Attribute.Enumeration<['normal', 'styled']>;
+    products: Attribute.Relation<
+      'api::collection.collection',
+      'manyToMany',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1435,9 +1435,9 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToMany',
       'api::category.category'
     >;
-    collection: Attribute.Relation<
+    collections: Attribute.Relation<
       'api::product.product',
-      'manyToOne',
+      'manyToMany',
       'api::collection.collection'
     >;
     groupBy: Attribute.String;
