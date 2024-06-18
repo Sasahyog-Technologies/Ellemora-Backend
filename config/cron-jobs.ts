@@ -55,7 +55,6 @@ export default {
      */
     '* * 0 * * *': async ({ strapi }: { strapi: Strapi }) => {
         console.log("🚀 ~ file: cron.js ~ executing action ~Every 12AM");
-        // filter those cart items which are available and 1 hour old
 
         const cartItems = await strapi.db.query('api::cart.cart').findMany({
             where: {
