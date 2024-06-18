@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "discount_tracks",
+  "info": {
+    "singularName": "discount-track",
+    "pluralName": "discount-tracks",
+    "displayName": "Discount Track"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "coupan": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::coupan.coupan"
+    },
+    "promocode": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::promocode.promocode"
+    }
+  }
+}

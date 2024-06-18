@@ -1205,6 +1205,50 @@ export interface ApiCustomizationCustomization extends Schema.CollectionType {
   };
 }
 
+export interface ApiDiscountTrackDiscountTrack extends Schema.CollectionType {
+  collectionName: 'discount_tracks';
+  info: {
+    singularName: 'discount-track';
+    pluralName: 'discount-tracks';
+    displayName: 'Discount Track';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::discount-track.discount-track',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    coupan: Attribute.Relation<
+      'api::discount-track.discount-track',
+      'oneToOne',
+      'api::coupan.coupan'
+    >;
+    promocode: Attribute.Relation<
+      'api::discount-track.discount-track',
+      'oneToOne',
+      'api::promocode.promocode'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::discount-track.discount-track',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::discount-track.discount-track',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOrderOrder extends Schema.CollectionType {
   collectionName: 'orders';
   info: {
@@ -1794,6 +1838,7 @@ declare module '@strapi/types' {
       'api::coupan.coupan': ApiCoupanCoupan;
       'api::custom.custom': ApiCustomCustom;
       'api::customization.customization': ApiCustomizationCustomization;
+      'api::discount-track.discount-track': ApiDiscountTrackDiscountTrack;
       'api::order.order': ApiOrderOrder;
       'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::payment.payment': ApiPaymentPayment;
