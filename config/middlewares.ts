@@ -15,12 +15,6 @@ module.exports = ({ env }) => [
         },
       },
     },
-    settings: {
-      cors: {
-        origin: ["*"],
-        headers: ["*"]
-      }
-    }
   },
   'strapi::cors',
   'strapi::poweredBy',
