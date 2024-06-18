@@ -1568,6 +1568,42 @@ export interface ApiProductVariantProductVariant extends Schema.CollectionType {
   };
 }
 
+export interface ApiPromocodePromocode extends Schema.CollectionType {
+  collectionName: 'promocodes';
+  info: {
+    singularName: 'promocode';
+    pluralName: 'promocodes';
+    displayName: 'Promocode';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    startDate: Attribute.DateTime;
+    endDate: Attribute.DateTime;
+    code: Attribute.String;
+    type: Attribute.Enumeration<['flat', 'percentage']>;
+    value: Attribute.BigInteger;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::promocode.promocode',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::promocode.promocode',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiShipmentShipment extends Schema.CollectionType {
   collectionName: 'shipments';
   info: {
@@ -1765,6 +1801,7 @@ declare module '@strapi/types' {
       'api::post.post': ApiPostPost;
       'api::product.product': ApiProductProduct;
       'api::product-variant.product-variant': ApiProductVariantProductVariant;
+      'api::promocode.promocode': ApiPromocodePromocode;
       'api::shipment.shipment': ApiShipmentShipment;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
       'api::tiket.tiket': ApiTiketTiket;
