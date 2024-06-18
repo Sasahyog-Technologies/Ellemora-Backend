@@ -1092,6 +1092,37 @@ export interface ApiCountryCountry extends Schema.CollectionType {
   };
 }
 
+export interface ApiCoupanCoupan extends Schema.CollectionType {
+  collectionName: 'coupans';
+  info: {
+    singularName: 'coupan';
+    pluralName: 'coupans';
+    displayName: 'Coupan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::coupan.coupan',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::coupan.coupan',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCustomCustom extends Schema.CollectionType {
   collectionName: 'customs';
   info: {
@@ -1724,6 +1755,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::collection.collection': ApiCollectionCollection;
       'api::country.country': ApiCountryCountry;
+      'api::coupan.coupan': ApiCoupanCoupan;
       'api::custom.custom': ApiCustomCustom;
       'api::customization.customization': ApiCustomizationCustomization;
       'api::order.order': ApiOrderOrder;

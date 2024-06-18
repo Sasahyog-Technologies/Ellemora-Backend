@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coupans",
+  "info": {
+    "singularName": "coupan",
+    "pluralName": "coupans",
+    "displayName": "Coupan"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
