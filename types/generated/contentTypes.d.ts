@@ -963,6 +963,7 @@ export interface ApiCartCart extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     quantity: Attribute.Integer;
+    isNotified: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

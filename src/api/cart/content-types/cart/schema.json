@@ -29,6 +29,10 @@
     },
     "quantity": {
       "type": "integer"
+    },
+    "isNotified": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
