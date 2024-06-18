@@ -4,7 +4,8 @@
   "info": {
     "singularName": "coupan",
     "pluralName": "coupans",
-    "displayName": "Coupan"
+    "displayName": "Coupan",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +17,23 @@
     },
     "description": {
       "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "MoreThanOrderItems",
+        "MoreThanPrice",
+        "MinThanOrders"
+      ]
+    },
+    "targetValue": {
+      "type": "biginteger"
+    },
+    "startDate": {
+      "type": "datetime"
+    },
+    "endDate": {
+      "type": "datetime"
     }
   }
 }

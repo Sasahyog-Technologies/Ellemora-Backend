@@ -1098,6 +1098,7 @@ export interface ApiCoupanCoupan extends Schema.CollectionType {
     singularName: 'coupan';
     pluralName: 'coupans';
     displayName: 'Coupan';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1105,6 +1106,12 @@ export interface ApiCoupanCoupan extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     description: Attribute.Text;
+    type: Attribute.Enumeration<
+      ['MoreThanOrderItems', 'MoreThanPrice', 'MinThanOrders']
+    >;
+    targetValue: Attribute.BigInteger;
+    startDate: Attribute.DateTime;
+    endDate: Attribute.DateTime;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
