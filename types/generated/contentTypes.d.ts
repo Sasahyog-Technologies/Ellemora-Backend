@@ -1235,6 +1235,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
       'manyToOne',
       'api::payment.payment'
     >;
+    currencyCode: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -122,6 +122,9 @@
       "relation": "manyToOne",
       "target": "api::payment.payment",
       "inversedBy": "orders"
+    },
+    "currencyCode": {
+      "type": "string"
     }
   }
 }
