@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notifications",
+  "info": {
+    "singularName": "notification",
+    "pluralName": "notifications",
+    "displayName": "Notification"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "vars": {
+      "type": "json"
+    },
+    "label": {
+      "type": "string"
+    },
+    "template_name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "pending pickup",
+        "in transit",
+        "exception",
+        "out for delivery",
+        "delivered",
+        "rto",
+        "rto in transit",
+        "rto delivered"
+      ]
+    },
+    "expiration_date": {
+      "type": "date"
+    },
+    "oid": {
+      "type": "biginteger"
+    }
+  }
+}

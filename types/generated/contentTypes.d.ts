@@ -1260,6 +1260,52 @@ export interface ApiDiscountTrackDiscountTrack extends Schema.CollectionType {
   };
 }
 
+export interface ApiNotificationNotification extends Schema.CollectionType {
+  collectionName: 'notifications';
+  info: {
+    singularName: 'notification';
+    pluralName: 'notifications';
+    displayName: 'Notification';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    vars: Attribute.JSON;
+    label: Attribute.String;
+    template_name: Attribute.String;
+    type: Attribute.Enumeration<
+      [
+        'pending pickup',
+        'in transit',
+        'exception',
+        'out for delivery',
+        'delivered',
+        'rto',
+        'rto in transit',
+        'rto delivered'
+      ]
+    >;
+    expiration_date: Attribute.Date;
+    oid: Attribute.BigInteger;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOrderOrder extends Schema.CollectionType {
   collectionName: 'orders';
   info: {
@@ -1850,6 +1896,7 @@ declare module '@strapi/types' {
       'api::custom.custom': ApiCustomCustom;
       'api::customization.customization': ApiCustomizationCustomization;
       'api::discount-track.discount-track': ApiDiscountTrackDiscountTrack;
+      'api::notification.notification': ApiNotificationNotification;
       'api::order.order': ApiOrderOrder;
       'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::payment.payment': ApiPaymentPayment;
