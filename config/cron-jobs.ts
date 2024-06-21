@@ -42,7 +42,7 @@ export const sendEllemoraWelcome = async ({ mobile, cartId }: { mobile: string, 
             messaging_product: "whatsapp",
             recipient_type: "individual",
             template: {
-                name: "abundant_cart",
+                name: "abundance_cart_message",
                 language: {
                     code: "en",
                 },
@@ -60,42 +60,40 @@ export default {
     /** 
      * Simple examples.
      */
-    // '*/15 * * * * *': async ({ strapi }: { strapi: Strapi }) => {
-    //     console.log("🚀 ~ file: cron.js ~ executing action ~Every 12AM");
-    //     // Fetch all cart items that have not been notified and were created more than 1 hour ago
-    //     const cartItems = await strapi.db.query('api::cart.cart').findMany({
-    //         where: {
-    //             isNotified: {
-    //                 $ne: true
-    //             },
-    //             createdAt: {
-    //                 $lt: new Date(new Date().getTime() - 0 * 0 * 1000)
-    //             }
-    //         },
-    //         populate: ["user"]
-    //     })
+    '* * 1 * * *': async ({ strapi }: { strapi: Strapi }) => {
+        console.log("🚀 ~ file: cron.js ~ executing action ~ every hour");
+        // Fetch all cart items that have not been notified and were created more than 1 hour ago
+        const cartItems = await strapi.db.query('api::cart.cart').findMany({
+            where: {
+                isNotified: {
+                    $ne: true
+                },
+                createdAt: {
+                    $lt: new Date(new Date().getTime() - 0 * 0 * 1000)
+                }
+            },
+            populate: ["user"]
+        })
 
-    //     console.log("cartItems", cartItems)
+        const userForNotification: {
+            mobile: string,
+            cartId: number
+        }[] = [];
 
-    //     const userForNotification: {
-    //         mobile: string,
-    //         cartId: number
-    //     }[] = [];
-
-    //     for (const cartItem of cartItems) {
-    //         if (cartItem?.user?.mobileNumber === undefined) return;
-    //         if (userForNotification.find((user) => user.mobile === cartItem?.user?.mobileNumber)) continue;
-    //         userForNotification.push({
-    //             mobile: cartItem?.user?.mobileNumber,
-    //             cartId: cartItem.id
-    //         })
-    //     }
-    //     console.log("userForNotification", userForNotification)
-    //     // Process cart items in batches
-    //     const batchSize = 5;
-    //     const delayTime = 5000; // 2 seconds delay between batches
-    //     await processCartItemsInBatches(userForNotification, batchSize, delayTime);
-    // },
+        for (const cartItem of cartItems) {
+            if (cartItem?.user?.mobileNumber === undefined) return;
+            if (userForNotification.find((user) => user.mobile === cartItem?.user?.mobileNumber)) continue;
+            userForNotification.push({
+                cartId: cartItem.id,
+                mobile: cartItem?.user?.mobileNumber,
+            })
+        }
+        console.log("userForNotification", userForNotification)
+        // Process cart items in batches
+        const batchSize = 5;
+        const delayTime = 5000; // 2 seconds delay between batches
+        await processCartItemsInBatches(userForNotification, batchSize, delayTime);
+    },
     // '*/10 * * * * *': () => {
     //     console.log("🚀 ~ file: cron.js ~ executing action ~Every 10sec");
     // },
