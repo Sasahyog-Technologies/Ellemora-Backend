@@ -15,21 +15,6 @@ export default {
             rule: " */59 * * * *",
         },
     },
-
-
-    /**
-     * Advanced example.
-     * Every monday at 1am.
-     */
-
-    myAdvancedJob: {
-        task: async ({ strapi }) => {
-            console.log("Advanced job running every 1 minute");
-        },
-        options: {
-            rule: "*/5 * * * *",
-        },
-    }
 }
 
 
@@ -71,7 +56,6 @@ const run = async (strapi: Strapi) => {
         }
         const unique_cart_items_with_user = [...storage.values()]
 
-        console.log(unique_cart_items_with_user)
 
         const sendMessages = async ({
             mobileNumber, uids
@@ -105,28 +89,26 @@ const run = async (strapi: Strapi) => {
                 })
             }
 
-            console.log("Sending message to", mobileNumber)
-
-            // await fetch("https://graph.facebook.com/v19.0/277625598767650/messages", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //         Authorization:
-            //             "Bearer EAANZAExOOidkBO82ihrLai5SafMn0qlZCj8O9AyfOFPpSozRDYZCIh1yLT0Sfs4DzlaCS17V2R826JFOAvUYerh1ChwlH1sceSBmmoqGsbrhHmwpZBZABrDCc8CnaZBbqNNhMbjIZADvwzpfIxc03cM46SoFZAFgGfhk8KHxXZBk4kiadqJtwnfkAt7mwA3IXcTD4",
-            //     },
-            //     body: JSON.stringify({
-            //         to: `${mobileNumber}`,
-            //         type: "template",
-            //         messaging_product: "whatsapp",
-            //         recipient_type: "individual",
-            //         template: {
-            //             name: "abundance_cart_message",
-            //             language: {
-            //                 code: "en",
-            //             },
-            //         },
-            //     }),
-            // });
+            await fetch("https://graph.facebook.com/v19.0/277625598767650/messages", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization:
+                        "Bearer EAANZAExOOidkBO82ihrLai5SafMn0qlZCj8O9AyfOFPpSozRDYZCIh1yLT0Sfs4DzlaCS17V2R826JFOAvUYerh1ChwlH1sceSBmmoqGsbrhHmwpZBZABrDCc8CnaZBbqNNhMbjIZADvwzpfIxc03cM46SoFZAFgGfhk8KHxXZBk4kiadqJtwnfkAt7mwA3IXcTD4",
+                },
+                body: JSON.stringify({
+                    to: `${mobileNumber}`,
+                    type: "template",
+                    messaging_product: "whatsapp",
+                    recipient_type: "individual",
+                    template: {
+                        name: "abundance_cart_message",
+                        language: {
+                            code: "en",
+                        },
+                    },
+                }),
+            });
         }
 
         for (const mobileNumber of unique_cart_items_with_user) {
