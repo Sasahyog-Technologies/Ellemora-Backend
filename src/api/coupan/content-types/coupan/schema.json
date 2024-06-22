@@ -46,7 +46,11 @@
       "type": "biginteger"
     },
     "selected": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
+    },
+    "code": {
+      "type": "string"
     }
   }
 }

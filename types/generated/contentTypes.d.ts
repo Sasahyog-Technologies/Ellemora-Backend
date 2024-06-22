@@ -1115,7 +1115,8 @@ export interface ApiCoupanCoupan extends Schema.CollectionType {
     endDate: Attribute.DateTime;
     discountType: Attribute.Enumeration<['flat', 'percentage']>;
     discountValue: Attribute.BigInteger;
-    selected: Attribute.Boolean;
+    selected: Attribute.Boolean & Attribute.DefaultTo<false>;
+    code: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
