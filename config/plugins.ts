@@ -1,5 +1,3 @@
-
-
 export default ({ env }) => ({
   transformer: {
     enabled: true,
@@ -20,6 +18,12 @@ export default ({ env }) => ({
           slugify: true,
         },
       },
+    },
+  },
+  "import-export-entries": {
+    enabled: true,
+    config: {
+      // See `Config` section.
     },
   },
   upload: {
