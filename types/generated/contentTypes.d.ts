@@ -1061,6 +1061,36 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
   };
 }
 
+export interface ApiConversionConversion extends Schema.SingleType {
+  collectionName: 'conversions';
+  info: {
+    singularName: 'conversion';
+    pluralName: 'conversions';
+    displayName: 'Conversion';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    currencies: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::conversion.conversion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::conversion.conversion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCountryCountry extends Schema.CollectionType {
   collectionName: 'countries';
   info: {
@@ -1892,6 +1922,7 @@ declare module '@strapi/types' {
       'api::cart.cart': ApiCartCart;
       'api::category.category': ApiCategoryCategory;
       'api::collection.collection': ApiCollectionCollection;
+      'api::conversion.conversion': ApiConversionConversion;
       'api::country.country': ApiCountryCountry;
       'api::coupan.coupan': ApiCoupanCoupan;
       'api::custom.custom': ApiCustomCustom;

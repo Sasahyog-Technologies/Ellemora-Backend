@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "conversions",
+  "info": {
+    "singularName": "conversion",
+    "pluralName": "conversions",
+    "displayName": "Conversion"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "currencies": {
+      "type": "json"
+    }
+  }
+}
