@@ -1,26 +1,52 @@
 import { Strapi } from "@strapi/strapi";
 
+const CURRENCY_URL = "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_Z0Ve8CMymp6HlZeHRy7X2UOgJNPXsD2rY8PYl76H&currencies=CAD%2CUSD%2CINR%2CEUR%2CGBP%2CJPY%2CAUD&base_currency=INR"
 
 export default {
-    /**
-     * Simple example.
-     * Every monday at 1am.
-     */
-
-    myJob: {
+    cartNotifier: {
         task: async ({ strapi }) => {
-            await run(strapi)
+            await notifier(strapi)
         },
         options: {
             rule: " */59 * * * *",
         },
     },
+
+    currencyFetcher: {
+        task: async ({ strapi }) => {
+            await fetchAndStoreCurrency(strapi)
+        },
+        options: {
+            rule: "0 0 * * *",
+        }
+    }
 }
 
+const fetchConvertionData = async () => {
+    try {
+        const response = await fetch(CURRENCY_URL);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.log("🚀 ~ file: cron.js ~ executing action ~Every 10sec", error);
+    }
+}
 
+const fetchAndStoreCurrency = async (strapi: Strapi) => {
+    try {
+        const response = await fetchConvertionData()
+        await strapi.entityService.update("api::conversion.conversion", 1, {
+            data: {
+                currencies: response as any,
+            }
+        });
+        console.log("Currency conversion rates updated successfully.");
+    } catch (error) {
+        console.error("🚀 ~ file: cron.js ~ executing action ~ Every 10sec", error);
+    }
+}
 
-
-const run = async (strapi: Strapi) => {
+const notifier = async (strapi: Strapi) => {
     try {
         console.log("++++++++++++++++++++++++++++++++++++++++++++++");
 
@@ -55,7 +81,6 @@ const run = async (strapi: Strapi) => {
             }
         }
         const unique_cart_items_with_user = [...storage.values()]
-
 
         const sendMessages = async ({
             mobileNumber, uids
