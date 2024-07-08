@@ -109,10 +109,6 @@ const vQBuilder = (queryFilters: Body) => {
     return combinedFilters;
 }
 
-
-
-
-
 export default ({ strapi }: { strapi: Strapi }) => ({
 
     async seachProductByFilters(ctx: Context) {
@@ -141,6 +137,11 @@ export default ({ strapi }: { strapi: Strapi }) => ({
                     media: {
                         populate: {
                             media: true
+                        }
+                    },
+                    variations: {
+                        populate: {
+                            values: true
                         }
                     }
                 },
