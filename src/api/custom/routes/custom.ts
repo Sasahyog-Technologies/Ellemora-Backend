@@ -1,8 +1,8 @@
 module.exports = {
     routes: [
         {
-            method: "POST",
-            path: "/custom-filters",
+            method: "GET",
+            path: "/product-filters",
             handler: "custom.seachProductByFilters",
             config: {
                 policies: [],
