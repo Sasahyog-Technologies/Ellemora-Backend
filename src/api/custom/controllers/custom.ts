@@ -40,7 +40,7 @@ const vQFilter = (query: queryOptions) => {
         },
         pagination: {
             page: query.page ? Number(query.page) : 1,
-            pageSize: query.pageSize ? Number(query.pageSize) : 25
+            pageSize: query.pageSize ? Number(query.pageSize) : 20
         },
     } as Body
 }
@@ -49,11 +49,17 @@ const vQBuilder = (queryFilters: Body) => {
 
     const { query, filters } = queryFilters
 
-    const queryBasedSearch = query ? [{
-        title: {
-            $containsi: query,
+    const queryBasedSearch = query ? [
+        {
+            title: {
+                $containsi: query,
+            },
         },
-    }] : []
+        {
+            tags: {
+                $containsi: query,
+            }
+        }] : []
 
     const colorOptionQueries = filters?.colors?.map(color => ({
         variants: {
@@ -95,7 +101,9 @@ const vQBuilder = (queryFilters: Body) => {
     ];
 
     const combinedFilters = [
-        ...queryBasedSearch,
+        {
+            $or: queryBasedSearch,
+        },
         {
             $or: colorOptionQueries,
         },
@@ -116,40 +124,59 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         const filters = vQFilter(query)
         const optionQuaries = vQBuilder(filters)
 
-        console.log(filters, optionQuaries)
+        // console.log(filters, optionQuaries)
 
         try {
-            const products = await strapi.query("api::product.product").findMany({
-                where: {
-                    $and: optionQuaries,
-                },
-                orderBy: filters.sort ? {
-                    variants: {
-                        price: filters.sort
-                    }
-                } : undefined,
-                populate: {
-                    variants: {
-                        populate: {
-                            options: true
-                        }
+            const [products, total] = await Promise.all([
+                strapi.query("api::product.product").findMany({
+                    where: {
+                        $and: optionQuaries,
                     },
-                    media: {
-                        populate: {
-                            media: true
+                    orderBy: filters.sort
+                        ? {
+                            variants: {
+                                price: filters.sort,
+                            },
                         }
+                        : undefined,
+                    populate: {
+                        variants: {
+                            populate: {
+                                options: true,
+                            },
+                        },
+                        media: {
+                            populate: {
+                                media: true,
+                            },
+                        },
+                        variations: {
+                            populate: {
+                                values: true,
+                            },
+                        },
                     },
-                    variations: {
-                        populate: {
-                            values: true
-                        }
-                    }
+                    offset: (filters.pagination.page - 1) * filters.pagination.pageSize,
+                    limit: filters.pagination.pageSize,
+                }),
+                strapi.query("api::product.product").count({
+                    where: {
+                        $and: optionQuaries,
+                    },
+                }),
+            ]);
+
+            const remaining = total - filters.pagination.page * filters.pagination.pageSize;
+
+            ctx.send(
+                {
+                    products,
+                    total,
+                    remaining: remaining > 0 ? remaining : 0,
                 },
-                count: true,
-                page: filters.pagination.page,
-                pageSize: filters.pagination.pageSize,
-            })
-            ctx.send({ products }, 200);
+                200
+            );
+
         } catch (err) {
             console.log(err)
             ctx.send({ error: 'An error occurred while fetching products.' }, 500);
