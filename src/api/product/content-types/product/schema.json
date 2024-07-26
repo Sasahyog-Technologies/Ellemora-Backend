@@ -134,6 +134,9 @@
     },
     "discountValue": {
       "type": "string"
+    },
+    "stag": {
+      "type": "text"
     }
   }
 }

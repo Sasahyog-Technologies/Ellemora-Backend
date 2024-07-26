@@ -1629,6 +1629,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     label: Attribute.Text;
     discountType: Attribute.String;
     discountValue: Attribute.String;
+    stag: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
