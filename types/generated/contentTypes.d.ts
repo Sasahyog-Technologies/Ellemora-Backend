@@ -987,7 +987,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    description: Attribute.Blocks;
     thumbnail: Attribute.Media;
     products: Attribute.Relation<
       'api::category.category',
@@ -995,6 +994,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::product.product'
     >;
     slug: Attribute.UID<'api::category.category', 'name'>;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1054,6 +1054,36 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::collection.collection',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiComissionComission extends Schema.SingleType {
+  collectionName: 'comissions';
+  info: {
+    singularName: 'comission';
+    pluralName: 'comissions';
+    displayName: 'Comission';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    comissions: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::comission.comission',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::comission.comission',
       'oneToOne',
       'admin::user'
     > &
@@ -1923,6 +1953,7 @@ declare module '@strapi/types' {
       'api::cart.cart': ApiCartCart;
       'api::category.category': ApiCategoryCategory;
       'api::collection.collection': ApiCollectionCollection;
+      'api::comission.comission': ApiComissionComission;
       'api::conversion.conversion': ApiConversionConversion;
       'api::country.country': ApiCountryCountry;
       'api::coupan.coupan': ApiCoupanCoupan;

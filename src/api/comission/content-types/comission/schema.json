@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "comissions",
+  "info": {
+    "singularName": "comission",
+    "pluralName": "comissions",
+    "displayName": "Comission"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "comissions": {
+      "type": "json"
+    }
+  }
+}

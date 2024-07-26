@@ -15,9 +15,6 @@
     "name": {
       "type": "string"
     },
-    "description": {
-      "type": "blocks"
-    },
     "thumbnail": {
       "type": "media",
       "multiple": false,
@@ -35,6 +32,9 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }
