@@ -56,7 +56,7 @@ const vQBuilder = (queryFilters: Body) => {
             },
         },
         {
-            tags: {
+            stags: {
                 $containsi: query,
             }
         }] : []
