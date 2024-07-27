@@ -114,6 +114,10 @@
       "relation": "oneToMany",
       "target": "api::tiket.tiket",
       "mappedBy": "customer"
+    },
+    "userEmail": {
+      "type": "email",
+      "unique": true
     }
   }
 }
