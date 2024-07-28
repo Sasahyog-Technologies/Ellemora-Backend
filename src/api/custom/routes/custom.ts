@@ -9,5 +9,15 @@ module.exports = {
                 middlewares: [],
             },
         },
+        {
+            method: "GET",
+            path: "/category-filters",
+            handler: "category-based-filters.seachProductByFilters",
+            config: {
+                policies: [],
+                middlewares: [],
+            },
+        },
+
     ],
 };
