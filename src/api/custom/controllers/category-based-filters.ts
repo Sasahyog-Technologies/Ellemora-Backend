@@ -7,6 +7,7 @@ import { Strapi } from "@strapi/strapi";
 
 interface Body {
     categories?: string[],
+    collections?: string[]
     query?: string,
     sort?: string,
     filters?: {
@@ -28,12 +29,14 @@ interface queryOptions {
     sizes?: string,
     prices?: string,
     categories?: string,
+    collections?: string,
     pageSize?: number
 }
 
 const vQFilter = (query: queryOptions) => {
     return {
         categories: query.categories ? query.categories.split(",") : [],
+        collections: query.collections ? query.collections.split(",") : [],
         query: query.query || undefined,
         sort: query.sort || undefined,
         filters: {
@@ -115,8 +118,19 @@ const vQBuilder = (queryFilters: Body) => {
         },
     ] : []
 
+    const collectionQuery = queryFilters.collections.length !== 0 ? [
+        {
+            collections: {
+                name: {
+                    $in: queryFilters.collections,
+                }
+            }
+        }
+    ] : [];
+
     const combinedFilters = [
         ...categoriesQueries,
+        ...collectionQuery,
         ...priceQueries,
         ...publishedQuery,
         {
@@ -139,10 +153,6 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         const query = ctx.request.query as queryOptions
         const filters = vQFilter(query)
         const optionQuaries = vQBuilder(filters)
-
-        console.log("q-", JSON.stringify(optionQuaries))
-
-        console.log("f-", JSON.stringify(filters))
 
         try {
             const [products, total] = await Promise.all([
