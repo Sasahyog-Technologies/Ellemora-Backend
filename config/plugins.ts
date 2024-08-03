@@ -1,4 +1,29 @@
 export default ({ env }) => ({
+  "rest-cache": {
+    config: {
+      provider: {
+        name: "memory",
+        options: {
+          max: 32767,
+          maxAge: 3600,
+        },
+      },
+      strategy: {
+        contentTypes: [
+          // list of Content-Types UID to cache
+          "api::product.product",
+          "api::product-variant.product-variant",
+          "api::collection.collection",
+          "api::banner.banner",
+          "api::post.post",
+          "api::comission.comission",
+          "api::conversion.conversion",
+          "api::custom.custom"
+        ],
+      },
+    },
+  },
+
   transformer: {
     enabled: true,
     config: {
