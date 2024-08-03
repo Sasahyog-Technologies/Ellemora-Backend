@@ -163,7 +163,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
                     orderBy: filters.sort
                         ? {
                             variants: {
-                                price: filters.sort,
+                                discountedPrice: filters.sort,
                             },
                         }
                         : undefined,
