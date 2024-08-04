@@ -149,7 +149,7 @@ const vQBuilder = (queryFilters: Body) => {
 
 export default ({ strapi }: { strapi: Strapi }) => ({
 
-    async seachProductByFilters(ctx: Context) {
+    async searchProductByFilters(ctx: Context) {
         const query = ctx.request.query as queryOptions
         const filters = vQFilter(query)
         const optionQuaries = vQBuilder(filters)
@@ -167,20 +167,26 @@ export default ({ strapi }: { strapi: Strapi }) => ({
                             },
                         }
                         : undefined,
+                    select: ['title'],
                     populate: {
                         variants: {
+                            select: ['discountedPrice', 'price', 'slug'],
                             populate: {
                                 options: true,
                             },
                         },
                         media: {
                             populate: {
-                                media: true,
+                                media: {
+                                    select: ['url']
+                                }
                             },
                         },
                         variations: {
                             populate: {
-                                values: true,
+                                values: {
+                                    select: ['value']
+                                },
                             },
                         },
                     },
@@ -193,6 +199,14 @@ export default ({ strapi }: { strapi: Strapi }) => ({
                     },
                 }),
             ]);
+
+            if (filters?.sort) {
+                products.sort((a, b) => {
+                    const aPrice = Math.min(...a.variants.map(v => v.discountedPrice));
+                    const bPrice = Math.min(...b.variants.map(v => v.discountedPrice));
+                    return filters.sort === 'asc' ? aPrice - bPrice : bPrice - aPrice;
+                });
+            }
 
             const remaining = total - filters.pagination.page * filters.pagination.pageSize;
 

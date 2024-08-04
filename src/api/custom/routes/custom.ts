@@ -12,7 +12,7 @@ module.exports = {
         {
             method: "GET",
             path: "/category-filters",
-            handler: "category-based-filters.seachProductByFilters",
+            handler: "category-based-filters.searchProductByFilters",
             config: {
                 policies: [],
                 middlewares: [],
