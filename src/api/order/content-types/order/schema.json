@@ -125,6 +125,10 @@
     },
     "currencyCode": {
       "type": "string"
+    },
+    "uuid": {
+      "type": "customField",
+      "customField": "plugin::field-uuid.uuid"
     }
   }
 }

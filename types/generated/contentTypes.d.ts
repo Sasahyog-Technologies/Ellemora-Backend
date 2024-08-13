@@ -1430,6 +1430,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
       'api::payment.payment'
     >;
     currencyCode: Attribute.String;
+    uuid: Attribute.UID & Attribute.CustomField<'plugin::field-uuid.uuid'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
