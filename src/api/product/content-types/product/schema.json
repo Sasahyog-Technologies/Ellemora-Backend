@@ -137,6 +137,9 @@
     },
     "stag": {
       "type": "text"
+    },
+    "expectedDeliveryDays": {
+      "type": "integer"
     }
   }
 }
