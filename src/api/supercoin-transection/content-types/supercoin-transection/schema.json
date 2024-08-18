@@ -44,6 +44,14 @@
       "relation": "oneToOne",
       "target": "api::order.order",
       "inversedBy": "superCoinTransection"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "sucessfull",
+        "cancelled"
+      ]
     }
   }
 }

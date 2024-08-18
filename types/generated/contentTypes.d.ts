@@ -1889,6 +1889,7 @@ export interface ApiSupercoinTransectionSupercoinTransection
       'oneToOne',
       'api::order.order'
     >;
+    status: Attribute.Enumeration<['pending', 'sucessfull', 'cancelled']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
