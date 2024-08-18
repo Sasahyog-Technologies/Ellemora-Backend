@@ -129,6 +129,12 @@
     "uuid": {
       "type": "customField",
       "customField": "plugin::field-uuid.uuid"
+    },
+    "superCoinTransection": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::supercoin-transection.supercoin-transection",
+      "mappedBy": "order"
     }
   }
 }

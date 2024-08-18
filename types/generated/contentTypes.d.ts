@@ -805,6 +805,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
         },
         string
       >;
+    supercoinTransections: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::supercoin-transection.supercoin-transection'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1438,6 +1443,11 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     >;
     currencyCode: Attribute.String;
     uuid: Attribute.UID & Attribute.CustomField<'plugin::field-uuid.uuid'>;
+    superCoinTransection: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'api::supercoin-transection.supercoin-transection'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1846,6 +1856,57 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiSupercoinTransectionSupercoinTransection
+  extends Schema.CollectionType {
+  collectionName: 'supercoin_transections';
+  info: {
+    singularName: 'supercoin-transection';
+    pluralName: 'supercoin-transections';
+    displayName: 'Supercoin Transection';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    type: Attribute.Enumeration<['CR', 'DR']>;
+    superCoins: Attribute.BigInteger &
+      Attribute.SetMinMax<
+        {
+          min: '0';
+        },
+        string
+      >;
+    responseType: Attribute.Enumeration<['quick', 'delay']>;
+    user: Attribute.Relation<
+      'api::supercoin-transection.supercoin-transection',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    delayDate: Attribute.Date;
+    order: Attribute.Relation<
+      'api::supercoin-transection.supercoin-transection',
+      'oneToOne',
+      'api::order.order'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::supercoin-transection.supercoin-transection',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::supercoin-transection.supercoin-transection',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTiketTiket extends Schema.CollectionType {
   collectionName: 'tikets';
   info: {
@@ -1981,6 +2042,7 @@ declare module '@strapi/types' {
       'api::promocode.promocode': ApiPromocodePromocode;
       'api::shipment.shipment': ApiShipmentShipment;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
+      'api::supercoin-transection.supercoin-transection': ApiSupercoinTransectionSupercoinTransection;
       'api::tiket.tiket': ApiTiketTiket;
       'api::wishlist.wishlist': ApiWishlistWishlist;
     }

@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "supercoin_transections",
+  "info": {
+    "singularName": "supercoin-transection",
+    "pluralName": "supercoin-transections",
+    "displayName": "Supercoin Transection",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "CR",
+        "DR"
+      ]
+    },
+    "superCoins": {
+      "type": "biginteger",
+      "min": "0"
+    },
+    "responseType": {
+      "type": "enumeration",
+      "enum": [
+        "quick",
+        "delay"
+      ]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "supercoinTransections"
+    },
+    "delayDate": {
+      "type": "date"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order.order",
+      "inversedBy": "superCoinTransection"
+    }
+  }
+}

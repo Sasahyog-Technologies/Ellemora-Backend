@@ -122,6 +122,12 @@
     "superCoins": {
       "type": "biginteger",
       "min": "0"
+    },
+    "supercoinTransections": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::supercoin-transection.supercoin-transection",
+      "mappedBy": "user"
     }
   }
 }
