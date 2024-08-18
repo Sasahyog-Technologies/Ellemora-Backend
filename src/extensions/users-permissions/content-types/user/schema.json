@@ -118,6 +118,10 @@
     "userEmail": {
       "type": "email",
       "unique": true
+    },
+    "superCoins": {
+      "type": "biginteger",
+      "min": "0"
     }
   }
 }

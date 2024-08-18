@@ -798,6 +798,13 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'api::tiket.tiket'
     >;
     userEmail: Attribute.Email & Attribute.Unique;
+    superCoins: Attribute.BigInteger &
+      Attribute.SetMinMax<
+        {
+          min: '0';
+        },
+        string
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
