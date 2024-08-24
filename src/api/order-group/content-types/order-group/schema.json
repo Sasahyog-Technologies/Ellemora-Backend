@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_groups",
+  "info": {
+    "singularName": "order-group",
+    "pluralName": "order-groups",
+    "displayName": "Order Group",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "orders": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order.order",
+      "inversedBy": "group"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

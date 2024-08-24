@@ -1448,6 +1448,11 @@ export interface ApiOrderOrder extends Schema.CollectionType {
       'oneToOne',
       'api::supercoin-transection.supercoin-transection'
     >;
+    group: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'api::order-group.order-group'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1459,6 +1464,46 @@ export interface ApiOrderOrder extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOrderGroupOrderGroup extends Schema.CollectionType {
+  collectionName: 'order_groups';
+  info: {
+    singularName: 'order-group';
+    pluralName: 'order-groups';
+    displayName: 'Order Group';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    orders: Attribute.Relation<
+      'api::order-group.order-group',
+      'oneToOne',
+      'api::order.order'
+    >;
+    user: Attribute.Relation<
+      'api::order-group.order-group',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order-group.order-group',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order-group.order-group',
       'oneToOne',
       'admin::user'
     > &
@@ -2034,6 +2079,7 @@ declare module '@strapi/types' {
       'api::discount-track.discount-track': ApiDiscountTrackDiscountTrack;
       'api::notification.notification': ApiNotificationNotification;
       'api::order.order': ApiOrderOrder;
+      'api::order-group.order-group': ApiOrderGroupOrderGroup;
       'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::payment.payment': ApiPaymentPayment;
       'api::pickup-location.pickup-location': ApiPickupLocationPickupLocation;

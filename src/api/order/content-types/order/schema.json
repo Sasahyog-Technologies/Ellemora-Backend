@@ -135,6 +135,12 @@
       "relation": "oneToOne",
       "target": "api::supercoin-transection.supercoin-transection",
       "mappedBy": "order"
+    },
+    "group": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order-group.order-group",
+      "mappedBy": "orders"
     }
   }
 }
