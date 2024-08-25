@@ -19,6 +19,59 @@ export default {
         options: {
             rule: "0 0 * * *",
         }
+    },
+
+    superCoinTransections: {
+        task: async ({ strapi }) => {
+            await superCoinTransections(strapi)
+        },
+        options: {
+            rule: "0 0 * * *"
+        }
+    },
+}
+
+const superCoinTransections = async (strapi: Strapi) => {
+    try {
+        const transections = await strapi.db.query('api::supercoin-transection.supercoin-transection').findMany({
+            where: {
+                sortDate: {
+                    $lte: new Date()
+                }
+            },
+            populate: {
+                user: {
+                    select: ["id", "superCoins"]
+                }
+            }
+        })
+
+        console.log("SUPERCOINTRANSECTIONCRONJOB", transections);
+
+        // process transections
+        for (const transection of transections) {
+            const { user } = transection
+            if (user) {
+                const { superCoins } = user
+                // update user superCoins
+                await strapi.db.query('plugin::users-permissions.user').update({
+                    where: {
+                        id: user.id
+                    },
+                    data: {
+                        superCoins: isNaN(superCoins) ? transection.amount : parseInt(superCoins) + parseInt(transection.amount)
+                    }
+                })
+                // dump transection 
+                await strapi.db.query('api::supercoin-transection.supercoin-transection').delete({
+                    where: {
+                        id: transection.id
+                    }
+                })
+            }
+        }
+    } catch (err) {
+        console.log("ERROR IN SUPERCOINTRANSECTIONCRONJOB", err);
     }
 }
 
@@ -28,7 +81,7 @@ const fetchConvertionData = async () => {
         const data = await response.json();
         return data;
     } catch (error) {
-        console.log("🚀 ~ file: cron.js ~ executing action ~Every 10sec", error);
+        console.log("ERRORINFETCHCONVERTIONDATACRONJOB", error);
     }
 }
 
@@ -42,14 +95,12 @@ const fetchAndStoreCurrency = async (strapi: Strapi) => {
         });
         console.log("Currency conversion rates updated successfully.");
     } catch (error) {
-        console.error("🚀 ~ file: cron.js ~ executing action ~ Every 10sec", error);
+        console.error("ERRORINFETCHANDSTORAGECURRECNYCRONJOB", error);
     }
 }
 
 const notifier = async (strapi: Strapi) => {
     try {
-        console.log("++++++++++++++++++++++++++++++++++++++++++++++");
-
         const cart_items = await strapi.db.query('api::cart.cart').findMany({
             where: {
                 $and: [
@@ -139,9 +190,8 @@ const notifier = async (strapi: Strapi) => {
         for (const mobileNumber of unique_cart_items_with_user) {
             await sendMessages(mobileNumber)
         }
-        console.log("**********************************************");
     }
     catch (err) {
-        console.log("🚀 ~ file: cron.js ~ executing action ~Every 10sec", err);
+        console.log("ERRORINNOTIFIERCRONJOB", err);
     }
 }
