@@ -1493,6 +1493,11 @@ export interface ApiOrderGroupOrderGroup extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    payment: Attribute.Relation<
+      'api::order-group.order-group',
+      'oneToOne',
+      'api::payment.payment'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1584,6 +1589,11 @@ export interface ApiPaymentPayment extends Schema.CollectionType {
     label: Attribute.String;
     amount: Attribute.Float;
     type: Attribute.Enumeration<['order', 'customization']>;
+    orderGroup: Attribute.Relation<
+      'api::payment.payment',
+      'oneToOne',
+      'api::order-group.order-group'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
