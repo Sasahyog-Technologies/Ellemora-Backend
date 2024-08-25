@@ -138,9 +138,9 @@
     },
     "group": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::order-group.order-group",
-      "mappedBy": "orders"
+      "inversedBy": "orders"
     }
   }
 }

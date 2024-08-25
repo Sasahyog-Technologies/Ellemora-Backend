@@ -1450,7 +1450,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     >;
     group: Attribute.Relation<
       'api::order.order',
-      'oneToOne',
+      'manyToOne',
       'api::order-group.order-group'
     >;
     createdAt: Attribute.DateTime;
@@ -1485,7 +1485,7 @@ export interface ApiOrderGroupOrderGroup extends Schema.CollectionType {
   attributes: {
     orders: Attribute.Relation<
       'api::order-group.order-group',
-      'oneToOne',
+      'oneToMany',
       'api::order.order'
     >;
     user: Attribute.Relation<

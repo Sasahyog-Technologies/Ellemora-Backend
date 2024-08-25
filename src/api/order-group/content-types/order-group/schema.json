@@ -14,9 +14,9 @@
   "attributes": {
     "orders": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::order.order",
-      "inversedBy": "group"
+      "mappedBy": "group"
     },
     "user": {
       "type": "relation",
