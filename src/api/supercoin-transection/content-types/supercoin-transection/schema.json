@@ -12,46 +12,19 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "CR",
-        "DR"
-      ]
+    "label": {
+      "type": "string"
     },
-    "superCoins": {
-      "type": "biginteger",
-      "min": "0"
-    },
-    "responseType": {
-      "type": "enumeration",
-      "enum": [
-        "quick",
-        "delay"
-      ]
+    "amount": {
+      "type": "biginteger"
     },
     "user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "supercoinTransections"
+      "target": "plugin::users-permissions.user"
     },
-    "delayDate": {
+    "sortDate": {
       "type": "date"
-    },
-    "order": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::order.order",
-      "inversedBy": "superCoinTransection"
-    },
-    "status": {
-      "type": "enumeration",
-      "enum": [
-        "pending",
-        "sucessfull",
-        "cancelled"
-      ]
     }
   }
 }

@@ -805,11 +805,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
         },
         string
       >;
-    supercoinTransections: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::supercoin-transection.supercoin-transection'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1443,11 +1438,6 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     >;
     currencyCode: Attribute.String;
     uuid: Attribute.UID & Attribute.CustomField<'plugin::field-uuid.uuid'>;
-    superCoinTransection: Attribute.Relation<
-      'api::order.order',
-      'oneToOne',
-      'api::supercoin-transection.supercoin-transection'
-    >;
     group: Attribute.Relation<
       'api::order.order',
       'manyToOne',
@@ -1924,27 +1914,14 @@ export interface ApiSupercoinTransectionSupercoinTransection
     draftAndPublish: true;
   };
   attributes: {
-    type: Attribute.Enumeration<['CR', 'DR']>;
-    superCoins: Attribute.BigInteger &
-      Attribute.SetMinMax<
-        {
-          min: '0';
-        },
-        string
-      >;
-    responseType: Attribute.Enumeration<['quick', 'delay']>;
+    label: Attribute.String;
+    amount: Attribute.BigInteger;
     user: Attribute.Relation<
       'api::supercoin-transection.supercoin-transection',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    delayDate: Attribute.Date;
-    order: Attribute.Relation<
-      'api::supercoin-transection.supercoin-transection',
-      'oneToOne',
-      'api::order.order'
-    >;
-    status: Attribute.Enumeration<['pending', 'sucessfull', 'cancelled']>;
+    sortDate: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
