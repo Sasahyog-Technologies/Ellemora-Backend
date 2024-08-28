@@ -1585,6 +1585,7 @@ export interface ApiPaymentPayment extends Schema.CollectionType {
       'oneToOne',
       'api::order-group.order-group'
     >;
+    currency: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
