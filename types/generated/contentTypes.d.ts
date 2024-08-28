@@ -1267,6 +1267,7 @@ export interface ApiCustomizationCustomization extends Schema.CollectionType {
     printMedia: Attribute.Media;
     cost: Attribute.BigInteger;
     percentageOfPayment: Attribute.BigInteger;
+    currency: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
