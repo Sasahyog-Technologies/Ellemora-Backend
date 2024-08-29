@@ -55,7 +55,7 @@ export default ({ env }) => ({
     config: {
       provider: "aws-s3",
       providerOptions: {
-        baseUrl: "https://s3.eu-north-1.amazonaws.com/ellemora",
+        baseUrl: "https://aws.ellemora.com",
         rootPath: "ellemora",
         s3Options: {
           accessKeyId: env("AWS_ACCESS_KEY_ID"),
