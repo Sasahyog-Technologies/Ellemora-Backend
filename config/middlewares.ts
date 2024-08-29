@@ -9,8 +9,8 @@ module.exports = ({ env }) => [
         useDefaults: true,
         directives: {
           'default-src': ["'self'"],
-          'img-src': ["'self'", "data:", "blob:", "https://aws.ellemora.com", "https://aws.ellemora.com"],
-          'media-src': ["'self'", "data:", "blob:", "https://aws.ellemora.com", "https://aws.ellemora.com"],
+          'img-src': ["'self'", "data:", "blob:", "https://ellemora.s3.amazonaws.com", "https://s3.eu-north-1.amazonaws.com"],
+          'media-src': ["'self'", "data:", "blob:", "https://ellemora.s3.amazonaws.com", "https://s3.eu-north-1.amazonaws.com"],
           upgradeInsecureRequests: null,
         },
       },
