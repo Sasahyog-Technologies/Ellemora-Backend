@@ -247,6 +247,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
 
           // Populations
           populate: {
+            options: true,
             product: {
               populate: {
                 variants: {
