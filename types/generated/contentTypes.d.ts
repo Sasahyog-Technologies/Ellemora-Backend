@@ -2160,6 +2160,7 @@ export interface ApiTransectionTransection extends Schema.CollectionType {
       'manyToOne',
       'api::wallet.wallet'
     >;
+    value: Attribute.BigInteger;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
