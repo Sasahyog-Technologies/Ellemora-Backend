@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "giftcards",
+  "info": {
+    "singularName": "giftcard",
+    "pluralName": "giftcards",
+    "displayName": "Giftcard",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "code": {
+      "type": "string"
+    },
+    "balance": {
+      "type": "biginteger",
+      "default": "1",
+      "min": "1"
+    },
+    "expiryDate": {
+      "type": "date"
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "isRedeemed": {
+      "type": "boolean"
+    },
+    "createdByUser": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "template": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::giftcard-template.giftcard-template"
+    }
+  }
+}

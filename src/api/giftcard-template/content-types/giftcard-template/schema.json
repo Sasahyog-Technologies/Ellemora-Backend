@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "giftcard_templates",
+  "info": {
+    "singularName": "giftcard-template",
+    "pluralName": "giftcard-templates",
+    "displayName": "Giftcard Template"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

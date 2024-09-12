@@ -1330,6 +1330,90 @@ export interface ApiDiscountTrackDiscountTrack extends Schema.CollectionType {
   };
 }
 
+export interface ApiGiftcardGiftcard extends Schema.CollectionType {
+  collectionName: 'giftcards';
+  info: {
+    singularName: 'giftcard';
+    pluralName: 'giftcards';
+    displayName: 'Giftcard';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Attribute.String;
+    balance: Attribute.BigInteger &
+      Attribute.SetMinMax<
+        {
+          min: '1';
+        },
+        string
+      > &
+      Attribute.DefaultTo<'1'>;
+    expiryDate: Attribute.Date;
+    isActive: Attribute.Boolean;
+    isRedeemed: Attribute.Boolean;
+    createdByUser: Attribute.Relation<
+      'api::giftcard.giftcard',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    template: Attribute.Relation<
+      'api::giftcard.giftcard',
+      'oneToOne',
+      'api::giftcard-template.giftcard-template'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::giftcard.giftcard',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::giftcard.giftcard',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGiftcardTemplateGiftcardTemplate
+  extends Schema.CollectionType {
+  collectionName: 'giftcard_templates';
+  info: {
+    singularName: 'giftcard-template';
+    pluralName: 'giftcard-templates';
+    displayName: 'Giftcard Template';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    thumbnail: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::giftcard-template.giftcard-template',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::giftcard-template.giftcard-template',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNotificationNotification extends Schema.CollectionType {
   collectionName: 'notifications';
   info: {
@@ -2066,6 +2150,8 @@ declare module '@strapi/types' {
       'api::custom.custom': ApiCustomCustom;
       'api::customization.customization': ApiCustomizationCustomization;
       'api::discount-track.discount-track': ApiDiscountTrackDiscountTrack;
+      'api::giftcard.giftcard': ApiGiftcardGiftcard;
+      'api::giftcard-template.giftcard-template': ApiGiftcardTemplateGiftcardTemplate;
       'api::notification.notification': ApiNotificationNotification;
       'api::order.order': ApiOrderOrder;
       'api::order-group.order-group': ApiOrderGroupOrderGroup;
