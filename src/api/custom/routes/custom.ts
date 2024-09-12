@@ -35,7 +35,15 @@ module.exports = {
                 policies: [],
                 middlewares: [],
             },
-        },
+        }, {
+            method: "POST",
+            path: "/create-gift-card",
+            handler: "giftcard.createGiftCard",
+            config: {
+                policies: [],
+                middlewares: []
+            }
+        }
 
 
     ],
