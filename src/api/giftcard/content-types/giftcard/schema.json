@@ -38,6 +38,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::giftcard-template.giftcard-template"
+    },
+    "transection": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::transection.transection",
+      "mappedBy": "giftcard"
     }
   }
 }

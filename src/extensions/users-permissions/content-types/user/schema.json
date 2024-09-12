@@ -122,6 +122,12 @@
     "superCoins": {
       "type": "biginteger",
       "min": "0"
+    },
+    "wallet": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wallet.wallet",
+      "mappedBy": "user"
     }
   }
 }

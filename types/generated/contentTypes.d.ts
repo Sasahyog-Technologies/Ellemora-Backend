@@ -805,6 +805,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
         },
         string
       >;
+    wallet: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::wallet.wallet'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1364,6 +1369,11 @@ export interface ApiGiftcardGiftcard extends Schema.CollectionType {
       'oneToOne',
       'api::giftcard-template.giftcard-template'
     >;
+    transection: Attribute.Relation<
+      'api::giftcard.giftcard',
+      'oneToOne',
+      'api::transection.transection'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1572,6 +1582,11 @@ export interface ApiOrderGroupOrderGroup extends Schema.CollectionType {
       'api::order-group.order-group',
       'oneToOne',
       'api::payment.payment'
+    >;
+    transection: Attribute.Relation<
+      'api::order-group.order-group',
+      'oneToOne',
+      'api::transection.transection'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1987,6 +2002,41 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiSupercoinSupercoin extends Schema.CollectionType {
+  collectionName: 'supercoins';
+  info: {
+    singularName: 'supercoin';
+    pluralName: 'supercoins';
+    displayName: 'Supercoin';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    balance: Attribute.BigInteger;
+    user: Attribute.Relation<
+      'api::supercoin.supercoin',
+      'oneToOne',
+      'admin::user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::supercoin.supercoin',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::supercoin.supercoin',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSupercoinTransectionSupercoinTransection
   extends Schema.CollectionType {
   collectionName: 'supercoin_transections';
@@ -2066,6 +2116,101 @@ export interface ApiTiketTiket extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::tiket.tiket',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTransectionTransection extends Schema.CollectionType {
+  collectionName: 'transections';
+  info: {
+    singularName: 'transection';
+    pluralName: 'transections';
+    displayName: 'Transection';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    gateway: Attribute.JSON;
+    type: Attribute.Enumeration<['order', 'coin', 'wallet', 'giftcard']>;
+    label: Attribute.String;
+    user: Attribute.Relation<
+      'api::transection.transection',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    status: Attribute.Enumeration<['paid', 'pending', 'cancelled', 'refunded']>;
+    amount: Attribute.BigInteger;
+    orderGroup: Attribute.Relation<
+      'api::transection.transection',
+      'oneToOne',
+      'api::order-group.order-group'
+    >;
+    giftcard: Attribute.Relation<
+      'api::transection.transection',
+      'oneToOne',
+      'api::giftcard.giftcard'
+    >;
+    wallet: Attribute.Relation<
+      'api::transection.transection',
+      'manyToOne',
+      'api::wallet.wallet'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::transection.transection',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::transection.transection',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiWalletWallet extends Schema.CollectionType {
+  collectionName: 'wallets';
+  info: {
+    singularName: 'wallet';
+    pluralName: 'wallets';
+    displayName: 'Wallet';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    balance: Attribute.BigInteger;
+    user: Attribute.Relation<
+      'api::wallet.wallet',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    transections: Attribute.Relation<
+      'api::wallet.wallet',
+      'oneToMany',
+      'api::transection.transection'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::wallet.wallet',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::wallet.wallet',
       'oneToOne',
       'admin::user'
     > &
@@ -2164,8 +2309,11 @@ declare module '@strapi/types' {
       'api::promocode.promocode': ApiPromocodePromocode;
       'api::shipment.shipment': ApiShipmentShipment;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
+      'api::supercoin.supercoin': ApiSupercoinSupercoin;
       'api::supercoin-transection.supercoin-transection': ApiSupercoinTransectionSupercoinTransection;
       'api::tiket.tiket': ApiTiketTiket;
+      'api::transection.transection': ApiTransectionTransection;
+      'api::wallet.wallet': ApiWalletWallet;
       'api::wishlist.wishlist': ApiWishlistWishlist;
     }
   }

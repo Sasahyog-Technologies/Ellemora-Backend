@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "supercoins",
+  "info": {
+    "singularName": "supercoin",
+    "pluralName": "supercoins",
+    "displayName": "Supercoin"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "balance": {
+      "type": "biginteger"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
+    }
+  }
+}
