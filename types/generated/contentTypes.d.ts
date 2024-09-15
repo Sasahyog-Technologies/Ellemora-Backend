@@ -2178,12 +2178,20 @@ export interface ApiWalletWallet extends Schema.CollectionType {
     singularName: 'wallet';
     pluralName: 'wallets';
     displayName: 'Wallet';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    balance: Attribute.BigInteger;
+    balance: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
     user: Attribute.Relation<
       'api::wallet.wallet',
       'oneToOne',

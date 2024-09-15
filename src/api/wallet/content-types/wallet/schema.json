@@ -4,7 +4,8 @@
   "info": {
     "singularName": "wallet",
     "pluralName": "wallets",
-    "displayName": "Wallet"
+    "displayName": "Wallet",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "balance": {
-      "type": "biginteger"
+      "type": "integer",
+      "default": 0,
+      "min": 0
     },
     "user": {
       "type": "relation",
