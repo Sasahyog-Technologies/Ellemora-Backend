@@ -46,6 +46,15 @@ module.exports = {
         },
         {
             method: "POST",
+            path: "/redeem-gift-card",
+            handler: "giftcard.redeemGiftCard",
+            config: {
+                policies: [],
+                middlewares: []
+            }
+        },
+        {
+            method: "POST",
             path: "/add-money-to-wallet",
             handler: "wallet.addMoneyToWallet",
             config: {

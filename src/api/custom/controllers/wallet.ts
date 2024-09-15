@@ -20,14 +20,14 @@ export default ({ strapi }: { strapi: Strapi }) => ({
 
         const knex = strapi.db.connection; // Get the Knex instance
 
-        const wallet = await strapi.query("api::wallet.wallet").findOne({
-            where: {
-                user: userId
-            }
-        });
-
         return await knex.transaction(async (trx) => {
             try {
+                const wallet = await strapi.query("api::wallet.wallet").findOne({
+                    where: {
+                        user: userId
+                    }
+                });
+
                 if (wallet) {
                     await strapi.entityService.update("api::wallet.wallet", wallet.id, {
                         data: {
@@ -38,7 +38,8 @@ export default ({ strapi }: { strapi: Strapi }) => ({
                     await strapi.entityService.create("api::wallet.wallet", {
                         data: {
                             user: userId,
-                            balance: amount
+                            balance: amount,
+                            publishedAt: new Date(),
                         }
                     })
                 }
