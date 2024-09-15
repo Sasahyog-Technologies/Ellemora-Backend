@@ -9,9 +9,6 @@ interface createGiftCard {
     templateId: number,
 }
 
-
-
-
 export default ({ strapi }: { strapi: Strapi }) => ({
     createGiftCard: async (ctx: Context) => {
         const {
@@ -21,9 +18,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         if (!gateway || !amount || !templateId || !userId) {
             ctx.throw(400, 'Please provide all required fields')
         }
-
         const knex = strapi.db.connection; // Get the Knex instance
-
         return await knex.transaction(async (trx) => {
             try {
                 const giftcard = await strapi.entityService.create("api::giftcard.giftcard", {
@@ -50,20 +45,21 @@ export default ({ strapi }: { strapi: Strapi }) => ({
 
                     }
                 })
-                // If all operations are successful, commit the transaction
                 await trx.commit();
-                // return { giftcard, transection }; // Return the created entities
-
                 return ctx.send({
-                    giftcard,
-                    transection
-                })
+                    data: {
+                        giftcard,
+                        transection
+                    },
+                    error: null
+                }, 200)
             } catch (error) {
-                // If an error occurs, rollback the transaction
                 await trx.rollback();
                 console.error(JSON.stringify(error, null, 2));
-                ctx.throw(500, 'Internal Server Error')
-
+                return ctx.send({
+                    error: error,
+                    data: null
+                }, 500)
             }
         });
     }
