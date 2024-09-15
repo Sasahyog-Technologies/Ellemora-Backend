@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "code": {
-      "type": "string"
-    },
     "balance": {
       "type": "integer",
       "default": 0
@@ -43,6 +40,10 @@
       "relation": "oneToOne",
       "target": "api::transection.transection",
       "mappedBy": "giftcard"
+    },
+    "code": {
+      "type": "customField",
+      "customField": "plugin::field-uuid.uuid"
     }
   }
 }

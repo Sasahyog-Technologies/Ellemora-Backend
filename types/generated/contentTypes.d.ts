@@ -1347,7 +1347,6 @@ export interface ApiGiftcardGiftcard extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    code: Attribute.String;
     balance: Attribute.Integer & Attribute.DefaultTo<0>;
     expiryDate: Attribute.Date;
     isActive: Attribute.Boolean;
@@ -1367,6 +1366,7 @@ export interface ApiGiftcardGiftcard extends Schema.CollectionType {
       'oneToOne',
       'api::transection.transection'
     >;
+    code: Attribute.UID & Attribute.CustomField<'plugin::field-uuid.uuid'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
