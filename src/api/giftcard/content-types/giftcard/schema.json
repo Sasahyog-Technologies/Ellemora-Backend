@@ -16,9 +16,8 @@
       "type": "string"
     },
     "balance": {
-      "type": "biginteger",
-      "default": "1",
-      "min": "1"
+      "type": "integer",
+      "default": 0
     },
     "expiryDate": {
       "type": "date"

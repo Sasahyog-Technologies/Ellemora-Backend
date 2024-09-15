@@ -42,7 +42,8 @@
       ]
     },
     "amount": {
-      "type": "biginteger"
+      "type": "integer",
+      "default": 0
     },
     "orderGroup": {
       "type": "relation",
@@ -63,7 +64,8 @@
       "inversedBy": "transections"
     },
     "value": {
-      "type": "biginteger"
+      "type": "integer",
+      "default": 0
     }
   }
 }

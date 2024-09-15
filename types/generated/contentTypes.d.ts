@@ -1348,14 +1348,7 @@ export interface ApiGiftcardGiftcard extends Schema.CollectionType {
   };
   attributes: {
     code: Attribute.String;
-    balance: Attribute.BigInteger &
-      Attribute.SetMinMax<
-        {
-          min: '1';
-        },
-        string
-      > &
-      Attribute.DefaultTo<'1'>;
+    balance: Attribute.Integer & Attribute.DefaultTo<0>;
     expiryDate: Attribute.Date;
     isActive: Attribute.Boolean;
     isRedeemed: Attribute.Boolean;
@@ -2144,7 +2137,7 @@ export interface ApiTransectionTransection extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     status: Attribute.Enumeration<['paid', 'pending', 'cancelled', 'refunded']>;
-    amount: Attribute.BigInteger;
+    amount: Attribute.Integer & Attribute.DefaultTo<0>;
     orderGroup: Attribute.Relation<
       'api::transection.transection',
       'oneToOne',
@@ -2160,7 +2153,7 @@ export interface ApiTransectionTransection extends Schema.CollectionType {
       'manyToOne',
       'api::wallet.wallet'
     >;
-    value: Attribute.BigInteger;
+    value: Attribute.Integer & Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
