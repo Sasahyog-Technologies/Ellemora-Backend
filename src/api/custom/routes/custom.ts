@@ -43,8 +43,15 @@ module.exports = {
                 policies: [],
                 middlewares: []
             }
+        },
+        {
+            method: "POST",
+            path: "/add-money-to-wallet",
+            handler: "wallet.addMoneyToWallet",
+            config: {
+                policies: [],
+                middlewares: []
+            }
         }
-
-
     ],
 };
