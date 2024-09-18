@@ -52,10 +52,12 @@ export interface VariationsColorImages extends Schema.Component {
   collectionName: 'components_variations_color_images';
   info: {
     displayName: 'ColorImages';
+    description: '';
   };
   attributes: {
     name: Attribute.String;
     media: Attribute.Media;
+    video: Attribute.Media;
   };
 }
 
