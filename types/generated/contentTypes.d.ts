@@ -1826,6 +1826,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     discountValue: Attribute.String;
     stag: Attribute.Text;
     expectedDeliveryDays: Attribute.Integer;
+    icons: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

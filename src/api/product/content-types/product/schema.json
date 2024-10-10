@@ -140,6 +140,16 @@
     },
     "expectedDeliveryDays": {
       "type": "integer"
+    },
+    "icons": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
