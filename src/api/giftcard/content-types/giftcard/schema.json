@@ -12,13 +12,9 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "code": {
-      "type": "string"
-    },
     "balance": {
-      "type": "biginteger",
-      "default": "1",
-      "min": "1"
+      "type": "integer",
+      "default": 0
     },
     "expiryDate": {
       "type": "date"
@@ -44,6 +40,10 @@
       "relation": "oneToOne",
       "target": "api::transection.transection",
       "mappedBy": "giftcard"
+    },
+    "code": {
+      "type": "customField",
+      "customField": "plugin::field-uuid.uuid"
     }
   }
 }
