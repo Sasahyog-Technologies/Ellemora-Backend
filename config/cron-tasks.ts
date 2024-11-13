@@ -17,7 +17,7 @@ export default {
             await fetchAndStoreCurrency(strapi)
         },
         options: {
-            rule: "0 0 * * *",
+            rule: "0 18 * * *",
         }
     },
 
