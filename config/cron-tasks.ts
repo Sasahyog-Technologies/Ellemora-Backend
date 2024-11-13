@@ -1,7 +1,6 @@
 import { Strapi } from "@strapi/strapi";
 
-const CURRENCY_URL =
-  "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_Z0Ve8CMymp6HlZeHRy7X2UOgJNPXsD2rY8PYl76H&base_currency=INR";
+const CURRENCY_URL = "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_Z0Ve8CMymp6HlZeHRy7X2UOgJNPXsD2rY8PYl76H&currencies=CAD%2CUSD%2CINR%2CEUR%2CGBP%2CJPY%2CAUD&base_currency=INR"
 
 export default {
   cartNotifier: {
