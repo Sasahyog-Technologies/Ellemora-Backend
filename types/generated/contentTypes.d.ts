@@ -1531,6 +1531,14 @@ export interface ApiOrderOrder extends Schema.CollectionType {
       'manyToOne',
       'api::order-group.order-group'
     >;
+    codTokenAmount: Attribute.Decimal;
+    codTokenPaymentId: Attribute.String;
+    codRemainingAmount: Attribute.Decimal;
+    codCollectionStatus: Attribute.Enumeration<
+      ['PENDING', 'COLLECTED', 'FAILED']
+    >;
+    codCollectionDate: Attribute.DateTime;
+    codPaymentReference: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1678,6 +1686,10 @@ export interface ApiPaymentPayment extends Schema.CollectionType {
       'api::order-group.order-group'
     >;
     currency: Attribute.String;
+    isTokenPayment: Attribute.Boolean;
+    paymentPurpose: Attribute.Enumeration<
+      ['FULL_PAYMENT', 'COD_TOKEN', 'COD_REMAINING']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

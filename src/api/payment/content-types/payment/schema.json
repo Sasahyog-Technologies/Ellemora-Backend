@@ -56,6 +56,17 @@
     },
     "currency": {
       "type": "string"
+    },
+    "isTokenPayment": {
+      "type": "boolean"
+    },
+    "paymentPurpose": {
+      "type": "enumeration",
+      "enum": [
+        "FULL_PAYMENT",
+        "COD_TOKEN",
+        "COD_REMAINING"
+      ]
     }
   }
 }
