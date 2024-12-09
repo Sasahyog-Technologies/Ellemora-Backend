@@ -1710,6 +1710,38 @@ export interface ApiPaymentPayment extends Schema.CollectionType {
   };
 }
 
+export interface ApiPaymentSettingPaymentSetting extends Schema.SingleType {
+  collectionName: 'payment_settings';
+  info: {
+    singularName: 'payment-setting';
+    pluralName: 'payment-settings';
+    displayName: 'payment-settings';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    codSettings: Attribute.JSON;
+    onlineSettings: Attribute.JSON;
+    isEnabled: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::payment-setting.payment-setting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::payment-setting.payment-setting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPickupLocationPickupLocation extends Schema.CollectionType {
   collectionName: 'pickup_locations';
   info: {
@@ -2319,6 +2351,7 @@ declare module '@strapi/types' {
       'api::order-group.order-group': ApiOrderGroupOrderGroup;
       'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::payment.payment': ApiPaymentPayment;
+      'api::payment-setting.payment-setting': ApiPaymentSettingPaymentSetting;
       'api::pickup-location.pickup-location': ApiPickupLocationPickupLocation;
       'api::post.post': ApiPostPost;
       'api::product.product': ApiProductProduct;
