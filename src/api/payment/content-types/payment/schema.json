@@ -67,6 +67,32 @@
         "COD_TOKEN",
         "COD_REMAINING"
       ]
+    },
+    "remainingAmount": {
+      "type": "decimal"
+    },
+    "paidAmount": {
+      "type": "decimal"
+    },
+    "discountAmount": {
+      "type": "decimal"
+    },
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": [
+        "PENDING",
+        "PARTIAL",
+        "COMPLETED",
+        "FAILED",
+        "REFUNDED"
+      ]
+    },
+    "razorpayDetails": {
+      "type": "json"
+    },
+    "codPaymentDetails": {
+      "type": "json",
+      "required": false
     }
   }
 }

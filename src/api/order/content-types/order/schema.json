@@ -136,23 +136,6 @@
       "target": "api::order-group.order-group",
       "inversedBy": "orders"
     },
-    "codTokenAmount": {
-      "type": "decimal"
-    },
-    "codTokenPaymentId": {
-      "type": "string"
-    },
-    "codRemainingAmount": {
-      "type": "decimal"
-    },
-    "codCollectionStatus": {
-      "type": "enumeration",
-      "enum": [
-        "PENDING",
-        "COLLECTED",
-        "FAILED"
-      ]
-    },
     "codCollectionDate": {
       "type": "datetime"
     },
