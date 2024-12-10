@@ -1575,7 +1575,7 @@ export interface ApiOrderGroupOrderGroup extends Schema.CollectionType {
     >;
     payment: Attribute.Relation<
       'api::order-group.order-group',
-      'oneToOne',
+      'oneToMany',
       'api::payment.payment'
     >;
     transection: Attribute.Relation<

@@ -25,9 +25,9 @@
     },
     "payment": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::payment.payment",
-      "inversedBy": "orderGroup"
+      "relation": "oneToMany",
+      "target": "api::payment.payment"
+     
     },
     "transection": {
       "type": "relation",
