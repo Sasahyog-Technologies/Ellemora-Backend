@@ -1575,7 +1575,7 @@ export interface ApiOrderGroupOrderGroup extends Schema.CollectionType {
     >;
     payment: Attribute.Relation<
       'api::order-group.order-group',
-      'oneToMany',
+      'oneToOne',
       'api::payment.payment'
     >;
     transection: Attribute.Relation<
@@ -1583,6 +1583,22 @@ export interface ApiOrderGroupOrderGroup extends Schema.CollectionType {
       'oneToOne',
       'api::transection.transection'
     >;
+    status: Attribute.Enumeration<
+      [
+        'PENDING',
+        'CONFIRMED',
+        'PROCESSING',
+        'SHIPPED',
+        'DELIVERED',
+        'CANCELLED'
+      ]
+    >;
+    trackingDetails: Attribute.JSON;
+    expectedDeliveryDate: Attribute.DateTime;
+    currency: Attribute.String;
+    shippingLabel: Attribute.String;
+    orderNumber: Attribute.String & Attribute.Unique;
+    totalAmount: Attribute.Decimal;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

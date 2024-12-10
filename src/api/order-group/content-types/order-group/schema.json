@@ -28,13 +28,42 @@
       "relation": "oneToOne",
       "target": "api::payment.payment",
       "inversedBy": "orderGroup"
-     
     },
     "transection": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::transection.transection",
       "mappedBy": "orderGroup"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "PENDING",
+        "CONFIRMED",
+        "PROCESSING",
+        "SHIPPED",
+        "DELIVERED",
+        "CANCELLED"
+      ]
+    },
+    "trackingDetails": {
+      "type": "json"
+    },
+    "expectedDeliveryDate": {
+      "type": "datetime"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "shippingLabel": {
+      "type": "string"
+    },
+    "orderNumber": {
+      "type": "string",
+      "unique": true
+    },
+    "totalAmount": {
+      "type": "decimal"
     }
   }
 }
