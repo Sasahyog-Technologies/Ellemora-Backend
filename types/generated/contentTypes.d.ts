@@ -1584,14 +1584,7 @@ export interface ApiOrderGroupOrderGroup extends Schema.CollectionType {
       'api::transection.transection'
     >;
     status: Attribute.Enumeration<
-      [
-        'PENDING',
-        'CONFIRMED',
-        'PROCESSING',
-        'SHIPPED',
-        'DELIVERED',
-        'CANCELLED'
-      ]
+      ['PLACED', 'CONFIRMED', 'SHIPPED', 'DELIVERED', 'CANCELLED']
     >;
     trackingDetails: Attribute.JSON;
     expectedDeliveryDate: Attribute.DateTime;

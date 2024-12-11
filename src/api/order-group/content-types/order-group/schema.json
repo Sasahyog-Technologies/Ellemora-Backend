@@ -37,10 +37,9 @@
     },
     "status": {
       "type": "enumeration",
-      "enum": [ 
-        "PENDING",
+      "enum": [
+        "PLACED",
         "CONFIRMED",
-        "PROCESSING",
         "SHIPPED",
         "DELIVERED",
         "CANCELLED"
