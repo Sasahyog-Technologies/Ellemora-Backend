@@ -1697,7 +1697,7 @@ export interface ApiPaymentPayment extends Schema.CollectionType {
     paidAmount: Attribute.Decimal;
     discountAmount: Attribute.Decimal;
     paymentStatus: Attribute.Enumeration<
-      ['PENDING', 'PARTIAL', 'COMPLETED', 'FAILED', 'REFUNDED']
+      ['PENDING', 'PARTIAL', 'COMPLETED', 'FAILED', 'REFUNDED', 'CANCELLED']
     >;
     razorpayDetails: Attribute.JSON;
     codPaymentDetails: Attribute.JSON;

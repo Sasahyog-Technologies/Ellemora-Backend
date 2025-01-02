@@ -84,7 +84,8 @@
         "PARTIAL",
         "COMPLETED",
         "FAILED",
-        "REFUNDED"
+        "REFUNDED",
+        "CANCELLED"
       ]
     },
     "razorpayDetails": {
