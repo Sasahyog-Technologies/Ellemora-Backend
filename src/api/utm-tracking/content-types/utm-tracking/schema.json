@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "utm_trackings",
+  "info": {
+    "singularName": "utm-tracking",
+    "pluralName": "utm-trackings",
+    "displayName": "UTM Tracking"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "utm_source": {
+      "type": "string"
+    },
+    "utm_campaign": {
+      "type": "string"
+    },
+    "utm_medium": {
+      "type": "string"
+    },
+    "campaign_id": {
+      "type": "string"
+    },
+    "adgroup_id": {
+      "type": "string"
+    },
+    "match_type": {
+      "type": "string"
+    },
+    "device": {
+      "type": "string"
+    },
+    "device_model": {
+      "type": "string"
+    },
+    "keyword": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "datetime"
+    },
+    "path": {
+      "type": "string"
+    }
+  }
+}

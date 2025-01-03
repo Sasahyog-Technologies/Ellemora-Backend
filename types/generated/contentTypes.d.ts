@@ -2228,6 +2228,46 @@ export interface ApiTransectionTransection extends Schema.CollectionType {
   };
 }
 
+export interface ApiUtmTrackingUtmTracking extends Schema.CollectionType {
+  collectionName: 'utm_trackings';
+  info: {
+    singularName: 'utm-tracking';
+    pluralName: 'utm-trackings';
+    displayName: 'UTM Tracking';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    utm_source: Attribute.String;
+    utm_campaign: Attribute.String;
+    utm_medium: Attribute.String;
+    campaign_id: Attribute.String;
+    adgroup_id: Attribute.String;
+    match_type: Attribute.String;
+    device: Attribute.String;
+    device_model: Attribute.String;
+    keyword: Attribute.String;
+    timestamp: Attribute.DateTime;
+    path: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::utm-tracking.utm-tracking',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::utm-tracking.utm-tracking',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiWalletWallet extends Schema.CollectionType {
   collectionName: 'wallets';
   info: {
@@ -2372,6 +2412,7 @@ declare module '@strapi/types' {
       'api::supercoin-transection.supercoin-transection': ApiSupercoinTransectionSupercoinTransection;
       'api::tiket.tiket': ApiTiketTiket;
       'api::transection.transection': ApiTransectionTransection;
+      'api::utm-tracking.utm-tracking': ApiUtmTrackingUtmTracking;
       'api::wallet.wallet': ApiWalletWallet;
       'api::wishlist.wishlist': ApiWishlistWishlist;
     }
