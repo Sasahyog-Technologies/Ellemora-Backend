@@ -1272,7 +1272,7 @@ export interface ApiCustomizationCustomization extends Schema.CollectionType {
     cost: Attribute.BigInteger;
     percentageOfPayment: Attribute.BigInteger;
     currency: Attribute.String;
-    email: Attribute.Email;
+    email: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

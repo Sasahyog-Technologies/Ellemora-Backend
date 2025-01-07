@@ -130,7 +130,7 @@
       "type": "string"
     },
     "email": {
-      "type": "email"
+      "type": "string"
     }
   }
 }
