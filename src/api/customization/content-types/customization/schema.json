@@ -18,9 +18,6 @@
     "mobile": {
       "type": "string"
     },
-    "email": {
-      "type": "email"
-    },
     "ocassion": {
       "type": "string"
     },
@@ -131,6 +128,9 @@
     },
     "currency": {
       "type": "string"
+    },
+    "email": {
+      "type": "email"
     }
   }
 }

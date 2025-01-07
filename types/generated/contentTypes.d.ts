@@ -1252,7 +1252,6 @@ export interface ApiCustomizationCustomization extends Schema.CollectionType {
   attributes: {
     fullName: Attribute.String;
     mobile: Attribute.String;
-    email: Attribute.Email;
     ocassion: Attribute.String;
     style: Attribute.String;
     budget: Attribute.BigInteger;
@@ -1273,6 +1272,7 @@ export interface ApiCustomizationCustomization extends Schema.CollectionType {
     cost: Attribute.BigInteger;
     percentageOfPayment: Attribute.BigInteger;
     currency: Attribute.String;
+    email: Attribute.Email;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
