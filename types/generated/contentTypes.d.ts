@@ -810,6 +810,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToOne',
       'api::wallet.wallet'
     >;
+    User: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::utm-tracking.utm-tracking'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2234,6 +2239,7 @@ export interface ApiUtmTrackingUtmTracking extends Schema.CollectionType {
     singularName: 'utm-tracking';
     pluralName: 'utm-trackings';
     displayName: 'UTM Tracking';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -2250,6 +2256,16 @@ export interface ApiUtmTrackingUtmTracking extends Schema.CollectionType {
     keyword: Attribute.String;
     timestamp: Attribute.DateTime;
     path: Attribute.String;
+    user: Attribute.Relation<
+      'api::utm-tracking.utm-tracking',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    order_id: Attribute.String;
+    order_amount: Attribute.Decimal;
+    user_details: Attribute.JSON;
+    checkout_details: Attribute.JSON;
+    payment_method: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

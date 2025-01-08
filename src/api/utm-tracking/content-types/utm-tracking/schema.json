@@ -4,7 +4,8 @@
   "info": {
     "singularName": "utm-tracking",
     "pluralName": "utm-trackings",
-    "displayName": "UTM Tracking"
+    "displayName": "UTM Tracking",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -42,6 +43,27 @@
       "type": "datetime"
     },
     "path": {
+      "type": "string"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "User"
+    },
+    "order_id": {
+      "type": "string"
+    },
+    "order_amount": {
+      "type": "decimal"
+    },
+    "user_details": {
+      "type": "json"
+    },
+    "checkout_details": {
+      "type": "json"
+    },
+    "payment_method": {
       "type": "string"
     }
   }

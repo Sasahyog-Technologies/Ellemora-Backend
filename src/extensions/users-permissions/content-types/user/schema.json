@@ -128,6 +128,12 @@
       "relation": "oneToOne",
       "target": "api::wallet.wallet",
       "mappedBy": "user"
+    },
+    "User": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::utm-tracking.utm-tracking",
+      "mappedBy": "user"
     }
   }
 }
