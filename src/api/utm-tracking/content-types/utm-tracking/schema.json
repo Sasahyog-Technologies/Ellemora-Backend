@@ -65,6 +65,15 @@
     },
     "payment_method": {
       "type": "string"
+    },
+    "checkout_status": {
+      "type": "enumeration",
+      "enum": [
+        "initiated",
+        "purchased",
+        "abandoned",
+        "failed"
+      ]
     }
   }
 }

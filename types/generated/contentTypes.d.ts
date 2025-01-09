@@ -2266,6 +2266,9 @@ export interface ApiUtmTrackingUtmTracking extends Schema.CollectionType {
     user_details: Attribute.JSON;
     checkout_details: Attribute.JSON;
     payment_method: Attribute.String;
+    checkout_status: Attribute.Enumeration<
+      ['initiated', 'purchased', 'abandoned', 'failed']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
