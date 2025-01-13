@@ -11,15 +11,17 @@ interface ExchangeRateResponse {
 const EXCHANGE_RATE_URL = 
   "https://v6.exchangerate-api.com/v6/00b12eb1d19e7c1d7515b383/latest/INR";
 
-export default {
-  cartNotifier: {
-    task: async ({ strapi }) => {
-      await notifier(strapi);
+  export default {
+    cartNotifier: {
+      task: async ({ strapi }) => {
+        await notifier(strapi);
+      },
+      options: {
+        rule: "58 20 * * *", // Schedule the task to run at 8:58 PM every day
+      },
     },
-    options: {
-      rule: " */59 * * * *",
-    },
-  },
+ 
+  
 
   currencyFetcher: {
     task: async ({ strapi }) => {
