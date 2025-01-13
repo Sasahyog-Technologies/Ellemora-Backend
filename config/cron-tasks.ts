@@ -9,7 +9,7 @@ interface ExchangeRateResponse {
 }
 
 const EXCHANGE_RATE_URL = 
-  "https://v6.exchangerate-api.com/v6/a4d262729828af2c5ede1366/latest/INR";
+  "https://v6.exchangerate-api.com/v6/00b12eb1d19e7c1d7515b383/latest/INR";
 
 export default {
   cartNotifier: {
