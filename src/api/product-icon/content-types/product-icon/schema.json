@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_icons",
+  "info": {
+    "singularName": "product-icon",
+    "pluralName": "product-icons",
+    "displayName": "Product Icon"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "Description": {
+      "type": "text"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "product_icons"
+    }
+  }
+}

@@ -1880,6 +1880,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
     stag: Attribute.Text;
     expectedDeliveryDays: Attribute.Integer;
     icons: Attribute.Media;
+    product_icons: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::product-icon.product-icon'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1891,6 +1896,43 @@ export interface ApiProductProduct extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductIconProductIcon extends Schema.CollectionType {
+  collectionName: 'product_icons';
+  info: {
+    singularName: 'product-icon';
+    pluralName: 'product-icons';
+    displayName: 'Product Icon';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String;
+    Icon: Attribute.Media;
+    Description: Attribute.Text;
+    products: Attribute.Relation<
+      'api::product-icon.product-icon',
+      'manyToMany',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product-icon.product-icon',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product-icon.product-icon',
       'oneToOne',
       'admin::user'
     > &
@@ -2423,6 +2465,7 @@ declare module '@strapi/types' {
       'api::pickup-location.pickup-location': ApiPickupLocationPickupLocation;
       'api::post.post': ApiPostPost;
       'api::product.product': ApiProductProduct;
+      'api::product-icon.product-icon': ApiProductIconProductIcon;
       'api::product-variant.product-variant': ApiProductVariantProductVariant;
       'api::promocode.promocode': ApiPromocodePromocode;
       'api::shipment.shipment': ApiShipmentShipment;

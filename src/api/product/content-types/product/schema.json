@@ -142,14 +142,21 @@
       "type": "integer"
     },
     "icons": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "product_icons": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-icon.product-icon",
+      "inversedBy": "products"
     }
   }
 }
